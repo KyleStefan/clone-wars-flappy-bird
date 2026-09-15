@@ -40,7 +40,7 @@ Already in a Codex chat that's connected to your repo? Even easier. Type: `Read 
 
 ## How today works
 
-You're the **boss**. You give one set of instructions to a **team lead** agent (the orchestrator). The team lead splits the work into three jobs and hands each one to a **builder** agent (a subagent). All three builders work at the same time. The team lead checks their work and hands you one finished package to approve.
+You're the **boss**. You give one set of instructions to a **team lead** agent (the orchestrator). The team lead splits the work into three jobs and hands each one to a **builder** agent (a subagent). All three builders work at the same time. **Each builder hands you its own part.** You evaluate each builder's work, then combine the three parts yourself, one at a time.
 
 ```
                          YOU  (the boss)
@@ -53,12 +53,12 @@ You're the **boss**. You give one set of instructions to a **team lead** agent (
      CORE builder     ART builder    SOUND builder     ← all three at the same time
      game.js          sprites.js     sounds.js
      config.js
+          │               │               │
+          ▼               ▼               ▼
+     pull request 1  pull request 2  pull request 3   ← one per builder
           └───────────────┼───────────────┘
                           ▼
-             ORCHESTRATOR checks the work
-                          │  one pull request
-                          ▼
-             YOU merge it and play it
+     YOU evaluate each one and combine them: merge Core, then Art, then Sound
 ```
 
 **Why three builders?** For a game this small, one agent could do it all. We use three so you learn the move. On bigger work, like a 20-page website or research on 10 competitors, this is how you finish in a third of the time. The real skill isn't starting three agents. It's knowing **which jobs don't need each other**.
@@ -70,11 +70,11 @@ You're the **boss**. You give one set of instructions to a **team lead** agent (
 | **Repo** (repository) | A folder of project files on GitHub. |
 | **Template** | The club's starter repo. You make your own copy. You never change the club's copy. |
 | **Live link** | Your game on the internet, like `https://your-name.github.io/clone-wars/`. It never changes, even when your game does. |
-| **Orchestrator** | The team lead agent. It plans, starts the builders, checks their work. |
-| **Subagent** | A builder agent. It does one job and only touches its own files. |
-| **Branch** | A separate copy of your files where agents work without touching your real version (`main`). |
-| **Pull request (PR)** | The team lead saying "here's the finished work, want it?" |
-| **Merge** | You saying "yes." The work goes into `main` and your live link updates. |
+| **Orchestrator** | The team lead agent. It plans and starts the builders. |
+| **Subagent** | A builder agent. It does one job, only touches its own files, and hands you its own pull request. |
+| **Branch** | A separate copy of your files where a builder works without touching your real version (`main`). |
+| **Pull request (PR)** | A builder saying "here's my part, want it?" |
+| **Merge** | You saying "yes." That part goes into `main` and your live link updates. Merging all three is how you combine them. |
 | **Answer key** | A working copy of the game's core, in case yours breaks. More in Step 5. |
 
 ---
@@ -243,17 +243,19 @@ Follow AGENTS.md Part A, Step 1: tell me the plan in plain words,
 then stop and wait until I type go.
 
 Part 2. When I type go.
-Follow AGENTS.md Part A, Steps 2 to 4: make the branch
-clone-wars-build, start all three subagents at the same time on
-gpt-5.6-luna, check their work, and open one pull request.
-Do not merge.
+Follow AGENTS.md Part A, Steps 2 to 4: start all three subagents at
+the same time on gpt-5.6-luna, each on its own branch. Each subagent
+opens its own pull request. Check their work, then give me the three
+pull request links in merge order: Core, Art, Sound.
+Do not merge anything, and do not combine them.
 ```
 
-The team lead replies with a plan. **Before you type go, check three things:**
+The team lead replies with a plan. **Before you type go, check four things:**
 
 - [ ] **Three jobs:** Core (`game.js`, `config.js`), Art (`sprites.js`), Sound (`sounds.js`).
 - [ ] **Your version is in it:** your title, your place, your character, your fix.
 - [ ] **It names the part that can't be split:** the crash check stays with Core.
+- [ ] **You'll get three pull requests**, one per builder, to merge in order: Core, Art, Sound.
 
 Something's off? Tell it what to change in plain words. Otherwise type:
 
@@ -277,94 +279,139 @@ While the builders work:
 
 > **Codex says you hit your usage limit?** Stop here. Nothing is lost: your live link is already in the portal. Watch a neighbor's build, then finish yours after the meeting. See [I ran out of usage](docs/HELP.md#i-ran-out-of-usage).
 >
-> **Following along on a neighbor's screen?** Ask them to show you their plan, their subagents and their pull request. Start your own after the meeting with this page.
+> **Following along on a neighbor's screen?** Ask them to show you their plan, their subagents and their three pull requests. Start your own after the meeting with this page.
 
-When the team lead finishes, it gives you a **pull request link**.
+When all three builders finish, the team lead sends you a summary: **three pull request links** (Core, Art, Sound) with when each builder started and finished.
 
-- No link? Look for a **Create PR** button in the chat, or a yellow **Compare & pull request** banner on your GitHub repo page.
-- It says subagents weren't available and it did the jobs one at a time? That's fine. Same game, it just took longer.
+- **Check that they really worked at the same time.** Look at the **Started** times. All three within a minute or so of each other means three subagents ran in parallel. If it says **one after another**, subagents weren't available in your Codex app. You still get three parts to evaluate, it just took longer.
+- Missing a link? Open your repo on GitHub and click **Pull requests**. You should see `Core: [your title]`, `Art: [your title]` and `Sound: [your title]`. Still missing one? See [I don't have a pull request](docs/HELP.md#i-dont-have-a-pull-request).
 
-✅ **You should see:** a message from the team lead with a pull request link and a summary of who built what.
+✅ **You should see:** three pull requests, one per builder, none merged yet.
 
 ---
 
-## Step 5 · Check the work, merge, play
+## Step 5 · Evaluate each builder, then combine
 
-⏱️ **About 8 minutes**
+⏱️ **About 12 minutes**
 
-### 5a · Check the pull request
+You're the boss now. Each builder hands you its part. You check it, and if it's good, you merge it into your game. You do this **three times, in order: Core, then Art, then Sound.** Your game assembles on your live link as you go.
 
-1. Open the pull request link (or go to your repo and click **Pull requests**, then **Clone Wars: [your title]**).
-2. Read the description: who built what, and the part that couldn't be split.
-3. Click the **Files changed** tab. This first pull request should show **4 files**: `config.js`, `game.js`, `sounds.js`, `sprites.js`.
-   - More than those four, or other names? Don't merge. Tell your team lead: "Put back every file except the four build files."
-   - Later pull requests (a fix or the answer key) change **fewer** files, usually just one. That's normal.
-   - You don't need to understand the code. You're checking that the right files changed, and nothing else.
-4. **Check that your team really worked at the same time.** In the description's **Who built what** table, look at the **Started** times. All three within a minute or so of each other means three subagents ran in parallel. If it says **one after another**, subagents weren't available in your Codex app. You get the same game, just slower.
+### How to evaluate a builder
 
-### 5b · Merge
+For each builder's pull request, answer three questions. You don't need to read any code.
 
-1. Go back to the **Conversation** tab.
-2. Click **Merge pull request**, then **Confirm merge**.
+| Question | How to check |
+| --- | --- |
+| **1. Did it stay in its lane?** | **Before merging**, click the **Files changed** tab. It should show **only** that builder's files. |
+| **2. Did it follow your version?** | Read the pull request description. Did it use your title, place, character and fix? |
+| **3. Does its part work?** | **After merging**, check your live link using that builder's check below. |
 
-✅ **You should see:** a purple **Merged** badge.
+**How to merge and check**, every time:
+1. On the pull request's **Conversation** tab, click **Merge pull request**, then **Confirm merge**. You'll see a purple **Merged** badge.
+2. Click your repo's **Actions** tab. Wait for the newest run to show a **green check** (about 1 to 2 minutes). A yellow dot means it's still running.
+3. Open your **live link** and do a **hard refresh**: **Cmd+Shift+R** on Mac, **Ctrl+Shift+R** on Windows. A normal refresh can keep showing the old page for a few minutes.
 
-### 5c · Wait for your live link to update
+**Watch the yellow label at the bottom of the game.** It lists the parts that haven't been merged yet, and it shrinks as you combine them. When it's gone, your game is complete.
 
-1. Click the **Actions** tab in your repo.
-2. Wait for the newest run to show a **green check** (about 1 to 2 minutes). A yellow dot means it's still running.
-3. Open your **live link** and do a **hard refresh**: **Cmd+Shift+R** on Mac, **Ctrl+Shift+R** on Windows. A normal refresh can keep showing the old starter page for a few minutes.
+**A builder fails a question?** Send it back. Only that builder redoes its part. See [Send a builder back](#send-a-builder-back) below.
 
-### 5d · Play it. Don't trust "done."
+---
 
-The agent said it's done. That doesn't mean it works. Check each one:
+### 5a · Builder 1: Core
 
+Core builds the rules of the game and your fix. Merge it first, because the other two parts plug into it.
+
+1. Open the pull request **Core: [your title]**.
+2. **Files changed** should show only `config.js` and `game.js`.
+3. Read the description. Does it say your title and your fix?
+4. Merge it, wait for Actions, and hard refresh your live link.
+
+**Check Core's work:**
 - [ ] Your title shows on the start screen.
 - [ ] Space, click or tap starts the game and flaps.
 - [ ] Obstacles come at you, and you score by passing them.
-- [ ] Hitting an obstacle or the ground ends the game and shows your score.
-- [ ] You can play again.
-- [ ] It looks like **your** place and **your** character. You can clearly see the character and obstacles.
-- [ ] You hear sounds. **M** turns them off and on.
+- [ ] Hitting an obstacle or the ground ends the game and shows your score. You can play again.
 - [ ] Your fix is there:
   - **Easy mode:** **Easy** and **Normal** buttons on the start screen. Easy has bigger gaps.
   - **Gentle start:** the first three gaps are clearly bigger than the ones after.
   - **Checkpoints:** reach 10 points, crash, and Game over says "Next game starts at checkpoint 10." Can't reach 10 in a couple of tries? Skip this box.
   - **Your own idea:** check whatever you asked for.
 
-✅ **You should see:** your game, playing, at your own link.
+✅ **You should see:** a working game made of **plain boxes, with no sound**, and a yellow label: `placeholder: art, sound missing`. That's correct. Art and Sound aren't merged yet.
 
-### Something's broken?
+### 5b · Builder 2: Art
 
-Work down this list. **Don't spend more than one fix try.** That's what the answer key is for.
+Art draws your world: the background, your character and the obstacles.
 
-**1. A small yellow label at the bottom says `placeholder: ... missing`.**
-A name doesn't match `CONTRACT.md`, so that part isn't plugging in. Go to 2.
+1. Open the pull request **Art: [your title]**.
+2. **Files changed** should show only `sprites.js`.
+3. Read the description. Does it describe your place and your character?
+4. Merge it, wait for Actions, and hard refresh your live link.
 
-**2. One fix try.** In the same chat, type `fix it:` and describe what you saw:
+**Check Art's work:**
+- [ ] It looks like **your** place.
+- [ ] You play as **your** character.
+- [ ] The obstacles fit your world.
+- [ ] You can **clearly see** your character and the obstacles against the background. Play one round to be sure.
+
+✅ **You should see:** the same game, now in your world. The yellow label says `placeholder: sound missing`.
+
+### 5c · Builder 3: Sound
+
+Sound makes the flap, score and crash sounds.
+
+1. Open the pull request **Sound: [your title]**.
+2. **Files changed** should show only `sounds.js`.
+3. Read the description. Do the sounds fit your version?
+4. Merge it, wait for Actions, and hard refresh your live link.
+
+**Check Sound's work:** turn your volume up, click or press Space, and play.
+- [ ] You hear a sound when you flap.
+- [ ] You hear a sound when you score.
+- [ ] You hear a sound when you crash.
+- [ ] **M** turns sound off and on.
+
+✅ **You should see:** your complete game. **The yellow label is gone.** You just combined three builders' work into one game.
+
+---
+
+### Send a builder back
+
+If a builder fails any check, type this in the same chat. Use `core`, `art` or `sound`, and say exactly what you saw:
 
 ```text
-fix it: [describe what's wrong, like "the game never starts when I press
-Space" or "the pipes are the same color as the sky so I can't see them"]
+fix art: I can't see the laser gates against the dark sky.
 ```
 
-The team lead makes a new pull request. Open it and check **Files changed**: a fix usually changes just 1 or 2 files, and that's fine. Merge it (same as 5b), wait for Actions, hard refresh, and play again.
+```text
+fix core: the start screen shows, but pressing Space does nothing.
+```
 
-**3. Still broken? Use the answer key.** The club has a working copy of `game.js`, the core of the game. It follows the same plan as yours, so your art, sound, title and fix (from the list) still plug in. In the same chat, type:
+The team lead sends only that builder back to fix its own part.
+- **If you haven't merged that builder yet,** its pull request updates. Check it again.
+- **If you already merged it,** you get a new pull request called **Fix [Core / Art / Sound]: ...**. Check its **Files changed** (only that builder's files), merge it, wait for Actions, and hard refresh.
+
+**Each builder gets one fix try.**
+
+### Core still broken? Use the answer key
+
+The club has a working copy of `game.js`, the core of the game. It follows the same plan as yours, so your title, art, sound and fix (from the list) still plug in. In the same chat, type:
 
 ```text
 use the answer key
 ```
 
-Open the new pull request. **Files changed** should show `game.js`, and maybe `config.js`. Nothing else. Merge it, wait for Actions, hard refresh, and play.
+Open the new pull request **Use the answer key**. **Files changed** should show `game.js`, and maybe `config.js`. Nothing else. Merge it, wait for Actions, hard refresh, and keep going with Art and Sound.
 
-> Using the answer key isn't cheating. Real engineers use a working reference all the time. The skill was **noticing** it was broken and **deciding** what to do.
+> Using the answer key isn't cheating. Real engineers use a working reference all the time. The skill was **noticing** a builder's work was broken and **deciding** what to do.
 
 Can't get the agent to swap it? See [Use the answer key by hand](docs/HELP.md#use-the-answer-key-by-hand).
 
-> ### 🛑 STOP 2 · Live and playable
+Art or Sound still broken after its one fix? Keep going. Your game still plays. Tell an officer after the meeting.
+
+> ### 🛑 STOP 2 · Combined and playable
 >
-> Your game plays at your own live link, and it looks like your version.
+> All three builders are merged. Your game plays at your own live link, looks like your version, and makes sound.
 
 ---
 
@@ -398,9 +445,9 @@ Can't get the agent to swap it? See [Use the answer key by hand](docs/HELP.md#us
 
 | Track | What you did today |
 | --- | --- |
-| **Orchestration** | You directed a team lead and three builders working at the same time, and approved one combined result. |
+| **Orchestration** | You directed a team lead and three builders working at the same time, then combined their work yourself, one part at a time. |
 | **Context** | One written plan (`CONTRACT.md`) let agents that never talked to each other build parts that fit. |
-| **Judgment** | You checked the plan before "go", checked which files changed, played the game instead of trusting "done", and decided whether to fix or use the answer key. |
+| **Judgment** | You checked the plan before "go", evaluated each builder on its own (right files, your version, working part), sent back any that failed, and decided whether to use the answer key. |
 | **Evidence** | A live link anyone can play, and one line explaining what couldn't be split. |
 | **Capability** | Agents that read your repo, write files, and open pull requests for you. |
 
@@ -443,13 +490,15 @@ three parts share, and the one part that can't be split, and why.
 Show me the plan and wait until I type go.
 
 Part 2. When I type go.
-On a branch named clone-build, save CONTRACT.md and an index.html
-that loads every file. Start all three subagents at the same time on
-gpt-5.6-luna, one per job. Each reads CONTRACT.md and touches only its
-own files. Plain HTML, CSS and JavaScript only: no frameworks, no web
-addresses, no API keys, no logos or brands. Check that the parts fit,
-then open one pull request with who built what and when each started
-and finished. Do not merge.
+First, open a pull request with only CONTRACT.md and an index.html
+that loads every file. Wait until I tell you I merged it.
+Then start all three subagents at the same time on gpt-5.6-luna, one
+per job, each on its own branch. Each reads CONTRACT.md, touches only
+its own files, and opens its own pull request saying what it built and
+when it started and finished. Plain HTML, CSS and JavaScript only: no
+frameworks, no web addresses, no API keys, no logos or brands.
+Give me the three pull request links and the order to merge them.
+Do not merge anything.
 ```
 
 **3. Check the plan before you type go.** It's the same skill as today:
@@ -458,6 +507,6 @@ and finished. Do not merge.
 - [ ] It names the part that can't be split.
 - [ ] **The real test:** does any job need another job's *code* to exist first, not just its *names*? If yes, those jobs aren't really parallel. Tell it: "Job [X] depends on job [Y]. Re-split so the three jobs only share names."
 
-**4. Merge, go live, play.** Check **Files changed** and merge. Then turn on Pages (**Settings → Pages → Deploy from a branch → main → /(root) → Save**), wait for the green check in **Actions**, and open your live link.
+**4. Go live, then evaluate and combine.** Merge the plan pull request first. Turn on Pages (**Settings → Pages → Deploy from a branch → main → /(root) → Save**). Then evaluate each builder's pull request the same way you did in Step 5, and merge them one at a time in the order the team lead gave you.
 
 Need help? [docs/HELP.md](docs/HELP.md)

@@ -26,8 +26,9 @@ Attach a screenshot if you can (Mac: **Cmd+Shift+4**. Windows: **Windows key+Shi
 [Plan didn't stop](#the-team-lead-didnt-stop-to-show-me-the-plan) ·
 [No subagents](#it-says-subagents-arent-available) ·
 [Out of usage](#i-ran-out-of-usage) ·
-[No pull request](#i-dont-have-a-pull-request) ·
-[Wrong files changed](#the-pull-request-changed-more-than-4-files) ·
+[Missing a pull request](#i-dont-have-a-pull-request) ·
+[Wrong files changed](#a-pull-request-changed-files-it-shouldnt) ·
+[Merged out of order](#i-merged-art-or-sound-before-core) ·
 [Placeholder label](#a-yellow-label-says-placeholder--missing) ·
 [Blank or unplayable](#blank-screen-or-the-game-wont-start) ·
 [Can't see things](#i-cant-see-my-character-or-the-obstacles) ·
@@ -89,19 +90,20 @@ A 404 is normal for the first 1 to 2 minutes after turning Pages on or merging.
 
 ## The team lead didn't stop to show me the plan
 
-It should stop and wait for **go**. If it started building right away, let it finish, then check the pull request carefully in Step 5. Next time, make sure you pasted the whole prompt, including "Part 1. Plan, then stop."
+It should stop and wait for **go**. If it started building right away, let it finish, then evaluate each builder's pull request carefully in Step 5. Next time, make sure you pasted the whole prompt, including "Part 1. Plan, then stop."
 
 ---
 
 ## It says subagents aren't available
 
-Some versions of Codex can't start subagents. The team lead does the three jobs one after another instead. You get the same game, it just takes longer. The lesson still holds: the three jobs **could** have run at the same time because they only share names.
+Some versions of Codex can't start subagents. The team lead does the three jobs one after another instead. You still get three pull requests to evaluate and combine, it just takes longer. The lesson still holds: the three jobs **could** have run at the same time because they only share names.
 
 If it didn't fall back on its own, type:
 
 ```text
 Subagents aren't available. Do the Core, Art and Sound jobs yourself,
-one after another, following AGENTS.md. Then open one pull request.
+one after another, following AGENTS.md. Put each job on its own branch
+and open three pull requests. Don't merge or combine them.
 ```
 
 ---
@@ -111,14 +113,15 @@ one after another, following AGENTS.md. Then open one pull request.
 Codex says you hit your limit, and it won't answer anymore. **You're done building for today, and nothing is lost.**
 
 - **Your link already counts.** You submitted your live link in Step 1, so it's in the portal.
-- **Keep learning now.** Sit with a neighbor whose build is running. Ask them to show you their plan, their subagents, their pull request and their game.
+- **Keep learning now.** Sit with a neighbor whose build is running. Ask them to show you their plan, their subagents, their three pull requests and their game.
 - **Finish later.** After the meeting, finish at home with the README and this page. There are two limits: a short one that resets within a few hours, and a weekly one that can take days. Codex tells you when you can use it again.
 - **When your limit resets,** open the same chat (or a new one with your repo link) and type:
 
   ```text
   Read AGENTS.md in my repo. My Clone Wars build stopped because I ran out
-  of usage. Check what's already finished, on any branch or pull request.
-  Finish only what's missing, then open one pull request. Don't merge.
+  of usage. Check which builders (Core, Art, Sound) already have a branch
+  or pull request. Restart only the missing builders, each with its own
+  pull request. Don't merge.
   ```
 
   If nothing was saved, it starts over from Step 3. That's fine.
@@ -128,35 +131,61 @@ Codex says you hit your limit, and it won't answer anymore. **You're done buildi
 
 ## I don't have a pull request
 
+You should have three: **Core**, **Art** and **Sound**. For each one that's missing:
+
 - Look for a **Create PR** button in the Codex chat.
-- Or open your repo on GitHub. A yellow banner may say **clone-wars-build had recent pushes** with a **Compare & pull request** button. Click it, then **Create pull request**.
-- Or click **Pull requests → New pull request**, set **compare** to `clone-wars-build`, and click **Create pull request**.
+- Or open your repo on GitHub. A yellow banner may say **clone-wars-art had recent pushes** (or core, or sound) with a **Compare & pull request** button. Click it, then **Create pull request**.
+- Or click **Pull requests → New pull request**, set **compare** to the builder's branch (`clone-wars-core`, `clone-wars-art` or `clone-wars-sound`), and click **Create pull request**.
+- No branch for that builder at all? Type: `The [Core / Art / Sound] builder didn't open a pull request. Restart only that builder, following AGENTS.md.`
 
 ---
 
-## The pull request changed more than 4 files
+## A pull request changed files it shouldn't
 
-Don't merge. Type in the chat:
+Each builder may only change its own files:
+
+| Pull request | Only these files |
+| --- | --- |
+| Core | `config.js`, `game.js` |
+| Art | `sprites.js` |
+| Sound | `sounds.js` |
+
+A **Fix** pull request follows the same rule for its builder. **Use the answer key** changes `game.js`, and maybe `config.js`.
+
+Anything else in **Files changed**? Don't merge. Type in the chat:
 
 ```text
-The pull request changed files other than game.js, config.js, sprites.js
-and sounds.js. Put every other file back exactly as it is on main.
+The [Core / Art / Sound] pull request changed files that aren't its own.
+Put every other file back exactly as it is on main.
 ```
 
 Check **Files changed** again before merging.
 
 ---
 
+## I merged Art or Sound before Core
+
+No harm done. Your live link keeps showing "Your starter is live." until Core is merged, because the game rules live in Core. Merge Core now, wait for Actions, hard refresh, and then check all the parts you've merged.
+
+---
+
 ## A yellow label says `placeholder: ... missing`
 
-The label names the parts that didn't plug in.
+The label lists the parts that aren't plugged in yet. **While you're combining, that's normal:**
 
-| Label says | What it means | What to type |
-| --- | --- | --- |
-| `settings` | `config.js` is missing or doesn't set `window.GAME_CONFIG` | `fix it: config.js isn't setting window.GAME_CONFIG. Check it against CONTRACT.md section 1.` |
-| `art`, or names like `drawBird` | `sprites.js` is missing or a function name is misspelled | `fix it: the label says [paste the label]. Fix sprites.js so the names match CONTRACT.md section 2 exactly.` |
-| `sound`, or names like `flap` | `sounds.js` is missing or a function name is misspelled | `fix it: the label says [paste the label]. Fix sounds.js so the names match CONTRACT.md section 3 exactly.` |
-| a setting name like `pipeGap` | `config.js` is missing that setting | `fix it: config.js is missing [name]. Add it using CONTRACT.md section 1.` |
+| You've merged | The label should say |
+| --- | --- |
+| Core | `placeholder: art, sound missing` |
+| Core + Art | `placeholder: sound missing` |
+| Core + Art + Sound | nothing (the label disappears) |
+
+If the label still names a part **you already merged**, that builder used a wrong name, so its part isn't plugging in. Send it back:
+
+| Label still says | What to type |
+| --- | --- |
+| `settings`, or a setting name like `pipeGap` | `fix core: the label says [paste the label]. Fix config.js so it matches CONTRACT.md section 1 exactly.` |
+| `art`, or names like `drawBird` | `fix art: the label says [paste the label]. Fix sprites.js so the names match CONTRACT.md section 2 exactly.` |
+| `sound`, or names like `flap` | `fix sound: the label says [paste the label]. Fix sounds.js so the names match CONTRACT.md section 3 exactly.` |
 
 ---
 
@@ -164,10 +193,10 @@ The label names the parts that didn't plug in.
 
 That's the Core builder's file, `game.js`, the part most likely to break.
 
-1. **One fix try.** Type `fix it:` and describe exactly what you see. For example: "fix it: the start screen shows but pressing Space does nothing."
+1. **One fix try.** Type `fix core:` and describe exactly what you see. For example: "fix core: the start screen shows but pressing Space does nothing."
 2. **Still broken?** Type `use the answer key`. Merge the new pull request and play again.
 
-Still showing "Your starter is live." after merging? First do a **hard refresh** (**Cmd+Shift+R** on Mac, **Ctrl+Shift+R** on Windows). A normal refresh can show the old page for a few minutes. Still the starter? Then `game.js` didn't load. Check that the pull request included `game.js` and that Actions shows a green check.
+Still showing "Your starter is live." after merging Core? First do a **hard refresh** (**Cmd+Shift+R** on Mac, **Ctrl+Shift+R** on Windows). A normal refresh can show the old page for a few minutes. Still the starter? Then `game.js` didn't load. Check that the Core pull request included `game.js` and that Actions shows a green check.
 
 ---
 
@@ -176,7 +205,7 @@ Still showing "Your starter is live." after merging? First do a **hard refresh**
 The art is too close to the background color. Type:
 
 ```text
-fix it: I can't see the [character / obstacles] against the background.
+fix art: I can't see the [character / obstacles] against the background.
 Make them stand out with brighter colors and a dark outline, following
 CONTRACT.md section 2.
 ```
@@ -190,7 +219,8 @@ This is one of the most common art bugs. Nice catch.
 - Press **M** once. Sound may be off.
 - Click or press Space first. Browsers don't allow sound until you interact with the page.
 - Check your computer's volume, and that the browser tab isn't muted.
-- Still nothing? `fix it: I hear no sound. Check sounds.js against CONTRACT.md section 3.`
+- Did you merge the **Sound** pull request? If the yellow label still says `sound missing`, Sound isn't merged or didn't plug in.
+- Still nothing? `fix sound: I hear no sound. Check sounds.js against CONTRACT.md section 3.`
 
 ---
 
@@ -224,4 +254,5 @@ Merged something that made it worse?
 - the portal won't accept your post;
 - your repo is owned by the wrong account or organization;
 - GitHub asks for permissions you don't understand;
-- the answer key is merged and the game still doesn't work.
+- the answer key is merged and the game still doesn't work;
+- Art or Sound is still broken after its one fix (after the meeting).
