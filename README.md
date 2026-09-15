@@ -1,6 +1,6 @@
 # Clone Wars · Session 03
 
-**Clone a game everyone knows, make it yours, and make it better. You've got about 40 minutes (plus setup, if it's your first time).**
+**Clone a game everyone knows, make it yours, and make it better. You've got about 40 minutes.**
 
 Today you clone a game inspired by Flappy Bird. You don't build it alone, and you don't build it one piece at a time. You **brief a team of AI agents**: one team lead and three builders who work **at the same time**. Then you check their work, ship it, and play it at your own link.
 
@@ -14,7 +14,7 @@ Nobody's game will look the same. Yours might be a seagull over San Luis Obispo 
 
 ## Stuck? Ask your AI first
 
-**It knows your screen better than any officer does.** Your AI can see your exact situation: your laptop, your browser, your error. An officer walking by can't. So **whenever you don't know what to do, give this page to your AI and ask.** Use whatever you have: Codex, Claude Code, ChatGPT, even the ChatGPT app on your phone if your laptop isn't set up yet.
+**It knows your screen better than any officer does.** Your AI can see your exact situation: your laptop, your browser, your error. An officer walking by can't. So **whenever you don't know what to do, give this page to your AI and ask.** Use whatever you have: Codex, Claude Code, ChatGPT, even the ChatGPT app on your phone.
 
 1. Copy the link to this page from your browser's address bar.
 2. Take a screenshot of what you're stuck on, if you can. (Mac: **Cmd+Shift+4**. Windows: **Windows key+Shift+S**.)
@@ -81,11 +81,11 @@ You're the **boss**. You give one set of instructions to a **team lead** agent (
 
 ## Step 0 · Before you start
 
-⏱️ **About 10 minutes if you already have GitHub and Codex. 20 to 25 minutes if this is your first time.** Do it before the meeting. If you did Session 02, you're probably already set up. Check each line anyway.
+**Do this before the meeting.** If you did Session 02, you're probably already set up. Check each line anyway.
 
-> **In the room and not set up yet?** Go straight to the **officers' setup table** when you arrive. Do Step 0 and Step 1 there. Don't try to listen to the talk and set up at the same time. You'll pair up with a neighbor at Step 4, and you can finish your own game after the meeting with this page.
+> **In the room and not set up?** Sit next to a neighbor who is, and follow along on their screen. Then do Step 0 and build your own game after the meeting with this page.
 
-1. **A GitHub account.** Sign up free at [github.com](https://github.com). Any email works. (New accounts take about 5 minutes: an email code and a quick puzzle.)
+1. **A GitHub account.** Sign up free at [github.com](https://github.com). Any email works.
 2. **Codex with a personal email.** The Codex student offer needs a **personal** email (like Gmail).
    - Signing up with your `calpoly.edu` email fails without telling you why.
    - The school Codex account can't use the GitHub connector, so it won't work today.
@@ -277,7 +277,7 @@ While the builders work:
 
 > **Codex says you hit your usage limit?** Stop here. Nothing is lost: your live link is already in the portal. Watch a neighbor's build, then finish yours after the meeting. See [I ran out of usage](docs/HELP.md#i-ran-out-of-usage).
 >
-> **Came from the setup table and your team isn't running yet?** Sit with a neighbor whose build is running. Ask them to show you their plan, their subagents and their pull request. Start your own after the meeting with this page.
+> **Following along on a neighbor's screen?** Ask them to show you their plan, their subagents and their pull request. Start your own after the meeting with this page.
 
 When the team lead finishes, it gives you a **pull request link**.
 

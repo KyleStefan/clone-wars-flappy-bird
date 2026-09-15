@@ -2,7 +2,7 @@
 
 Something not working? Find your problem below. Button names move around as apps update, so if a label doesn't match exactly, look for the closest one.
 
-**Before anything else, ask your AI.** It can see your exact screen and error. An officer can't. Give it the tutorial and this page, and ask. Use Codex, Claude Code, or ChatGPT (even on your phone if your laptop isn't set up):
+**Before anything else, ask your AI.** It can see your exact screen and error. An officer can't. Give it the tutorial and this page, and ask. Use Codex, Claude Code, or ChatGPT (even on your phone):
 
 ```text
 I'm a beginner following this tutorial: [paste the link to your repo's README page]
