@@ -233,7 +233,7 @@ If the agent can't swap it for you:
 3. In **your** repo, click `game.js`, then the **pencil icon** (Edit this file).
 4. Select everything in the editor (Cmd+A on Mac, Ctrl+A on Windows) and paste.
 5. Click **Commit changes** → leave **Commit directly to the main branch** selected → **Commit changes**.
-6. If you wrote your own custom fix: open `config.js`, click the pencil, change `fix: 'custom'` to `fix: 'none'`, and commit.
+6. If your **Plays differently** line was your own idea: open `config.js`, click the pencil, change `fix: 'custom'` to `fix: 'none'`, and commit.
 7. Wait for **Actions** to show a green check, then play.
 
 ---

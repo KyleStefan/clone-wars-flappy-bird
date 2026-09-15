@@ -1,6 +1,6 @@
 # Clone Wars · Session 03
 
-**Clone a game everyone knows, make it yours, and make it better. You've got about 40 minutes.**
+**Clone a game everyone knows and make it yours: change how it looks, sounds and plays. You've got about 40 minutes.**
 
 Today you clone a game inspired by Flappy Bird. You don't build it alone, and you don't build it one piece at a time. You **brief a team of AI agents**: one team lead and three builders who work **at the same time**. Then you check their work, ship it, and play it at your own link.
 
@@ -8,7 +8,7 @@ Nobody's game will look the same. Yours might be a seagull over San Luis Obispo 
 
 > **Missed the meeting?** Everything you need is on this page. Go top to bottom. Each step says how long it takes and what you should see.
 
-**Finish line:** your game plays at your own live link, it looks and sounds like your version, your fix is in it, and your link is in the club portal.
+**Finish line:** your game plays at your own live link, it looks, sounds and plays the way you chose, and your link is in the club portal.
 
 ---
 
@@ -178,10 +178,10 @@ three subagents.
 My repo: [paste your REPO link, the github.com one]
 
 My version:
-- Title: [your title]
-- Set in: [a place or vibe]
-- I play as: [your character]
-- Better because: [easy mode, gentle start, checkpoints, or your own idea]
+- Title: [a name for your game]
+- Looks like: [where it's set, what the obstacles are, and who you play as]
+- Sounds like: [what the flap, score and crash sound like, or "whatever fits"]
+- Plays differently: [Easy/Normal buttons, Easier first 3 obstacles, Checkpoints every 10 points, or your own idea]
 
 Part 1. Plan, then stop.
 Read AGENTS.md and CONTRACT.md in my repo. Change nothing yet.
@@ -196,17 +196,19 @@ pull request links in merge order: Core, Art, Sound.
 Do not merge anything, and do not combine them.
 ```
 
-### 2b · Fill in the five brackets
+### 2b · Make it yours: how it looks, sounds and plays
+
+You're taking a game that already exists and changing **three things** about it: **how it looks, how it sounds, and how it plays.** Each change goes to a different builder.
 
 In your note, replace each **[square bracket]**, including the brackets themselves. Only these five lines change. Leave everything else exactly as it is.
 
-| Line in the prompt | What to write | Which builder uses it |
+| Line in the prompt | What to write | Built by |
 | --- | --- | --- |
 | **My repo** | Your **repo link** from Step 1c. It ends in `/clone-wars`. | The team lead |
 | **Title** | A name for your game, 30 characters max | Core |
-| **Set in** | A place or a vibe. It becomes your background, obstacles and sounds. | Art and Sound |
-| **I play as** | Your character | Art and Sound |
-| **Better because** | Your fix. Pick one from the list below, or write your own. | Core |
+| **Looks like** | Where it's set, what the obstacles are, and who you play as | Art |
+| **Sounds like** | What the flap, score and crash sound like. Not sure? Write "whatever fits." | Sound |
+| **Plays differently** | One change to how the game plays. Pick one from the list below, or write your own. | Core |
 
 **Here's what the middle of a finished prompt looks like:**
 
@@ -215,38 +217,33 @@ My repo: https://github.com/your-username/clone-wars
 
 My version:
 - Title: SLO Flap
-- Set in: San Luis Obispo at sunset, Bishop Peak in the back, palm trees as obstacles
-- I play as: a seagull
-- Better because: easy mode
+- Looks like: San Luis Obispo at sunset, Bishop Peak in the back, palm trees as obstacles. I play as a seagull.
+- Sounds like: a seagull squawk when I flap, a beach bell when I score, a splash when I crash
+- Plays differently: Easy/Normal buttons
 ```
 
 ### Need ideas?
 
-| Title | Set in | I play as |
+| Title | Looks like | Sounds like |
 | --- | --- | --- |
-| Galaxy Flap | a desert planet with two suns, a space-station trench with laser gates as obstacles | a small starfighter |
-| SLO Flap | San Luis Obispo at sunset, Bishop Peak in the back, palm trees as obstacles | a seagull |
-| Big Apple Dash | New York City at night, skyscrapers as obstacles | a pigeon |
-| Orbit | outer space, asteroids as obstacles | a tiny rocket |
-| Farm Run | a Cal Poly farm field, hay bale stacks as obstacles | a chicken |
-| Pismo Glide | Pismo Beach on a sunny day, pier posts as obstacles | a pelican |
-
-Want to pick what the obstacles look like? Put it in your **Set in** line, like the examples. If you don't, the Art builder picks something that fits.
+| Galaxy Flap | a desert planet with two suns, laser gates as obstacles. I play as a small starfighter. | laser pews, a hyperspace whoosh, an explosion |
+| SLO Flap | San Luis Obispo at sunset, palm trees as obstacles. I play as a seagull. | a squawk, a beach bell, a splash |
+| Big Apple Dash | New York City at night, skyscrapers as obstacles. I play as a pigeon. | a coo, a subway ding, a car horn |
+| Orbit | outer space, asteroids as obstacles. I play as a tiny rocket. | a thruster puff, a sparkle, a crunch |
+| Farm Run | a Cal Poly farm field, hay bale stacks as obstacles. I play as a chicken. | a cluck, a cowbell, a thud |
 
 Keep it simple: bold shapes and silhouettes draw well. Tiny details (a specific logo, a real person, your apartment's exact couch) don't.
 
 **Inspired by a movie or show? Go for the vibe, not the brand.** "A desert planet with two suns" and "a small starfighter" are great. Named characters, famous ships, logos and theme songs aren't allowed. No real people either.
 
-### Pick your fix ("Better because")
+### Pick how it plays differently
 
-Pick one way to make yours better than the original:
-
-| Write this | What it does |
+| Write this | What changes |
 | --- | --- |
-| **easy mode** | Easy and Normal buttons on the start screen. Easy has bigger gaps and slower obstacles. |
-| **gentle start** | The first three obstacles have bigger gaps and move slower, so you don't die in two seconds. |
-| **checkpoints** | Every 10 points is a checkpoint. After a crash, you start again from your last checkpoint, not from zero. |
-| **Your own idea** | Describe it in one sentence. The Core builder will try it. Custom fixes are riskier and aren't in the answer key. |
+| **Easy/Normal buttons** | Easy and Normal buttons on the start screen. Easy has bigger gaps and slower obstacles. |
+| **Easier first 3 obstacles** | The first three obstacles have bigger gaps and move slower, so you don't crash right away. |
+| **Checkpoints every 10 points** | After a crash, you start again from your last checkpoint (10, 20, 30...), not from zero. |
+| **Your own idea** | Describe it in one sentence. The Core builder will try it. Your own ideas are riskier and aren't in the answer key. |
 
 ✅ **You should see:** the whole prompt in your note, with your repo link and your four answers filled in, and **no square brackets left**.
 
@@ -274,7 +271,7 @@ Three builders can work at the same time only if they **agree on names before th
 The team lead replies with a plan. **Before you type go, check four things:**
 
 - [ ] **Three jobs:** Core (`game.js`, `config.js`), Art (`sprites.js`), Sound (`sounds.js`).
-- [ ] **Your version is in it:** your title, your place, your character, your fix.
+- [ ] **Your version is in it:** your title, how it looks, how it sounds, and how it plays differently.
 - [ ] **It names the part that can't be split:** the crash check stays with Core.
 - [ ] **You'll get three pull requests**, one per builder, to merge in order: Core, Art, Sound.
 
@@ -324,7 +321,7 @@ For each builder's pull request, answer three questions. You don't need to read 
 | Question | How to check |
 | --- | --- |
 | **1. Did it stay in its lane?** | **Before merging**, click the **Files changed** tab. It should show **only** that builder's files. |
-| **2. Did it follow your version?** | Read the pull request description. Did it use your title, place, character and fix? |
+| **2. Did it follow your version?** | Read the pull request description. Does it match the line you gave that builder: **Looks like** for Art, **Sounds like** for Sound, **Title** and **Plays differently** for Core? |
 | **3. Does its part work?** | **After merging**, check your live link using that builder's check below. |
 
 **How to merge and check**, every time:
@@ -340,11 +337,11 @@ For each builder's pull request, answer three questions. You don't need to read 
 
 ### 5a · Builder 1: Core
 
-Core builds the rules of the game and your fix. Merge it first, because the other two parts plug into it.
+Core builds the rules of the game, your title, and **how it plays differently**. Merge it first, because the other two parts plug into it.
 
 1. Open the pull request **Core: [your title]**.
 2. **Files changed** should show only `config.js` and `game.js`.
-3. Read the description. Does it say your title and your fix?
+3. Read the description. Does it match your **Title** and **Plays differently** lines?
 4. Merge it, wait for Actions, and hard refresh your live link.
 
 **Check Core's work:**
@@ -352,44 +349,44 @@ Core builds the rules of the game and your fix. Merge it first, because the othe
 - [ ] Space, click or tap starts the game and flaps.
 - [ ] Obstacles come at you, and you score by passing them.
 - [ ] Hitting an obstacle or the ground ends the game and shows your score. You can play again.
-- [ ] Your fix is there:
-  - **Easy mode:** **Easy** and **Normal** buttons on the start screen. Easy has bigger gaps.
-  - **Gentle start:** the first three gaps are clearly bigger than the ones after.
-  - **Checkpoints:** reach 10 points, crash, and Game over says "Next game starts at checkpoint 10." Can't reach 10 in a couple of tries? Skip this box.
+- [ ] It plays differently the way you asked:
+  - **Easy/Normal buttons:** **Easy** and **Normal** buttons on the start screen. Easy has bigger gaps.
+  - **Easier first 3 obstacles:** the first three gaps are clearly bigger than the ones after.
+  - **Checkpoints every 10 points:** reach 10 points, crash, and Game over says "Next game starts at checkpoint 10." Can't reach 10 in a couple of tries? Skip this box.
   - **Your own idea:** check whatever you asked for.
 
 ✅ **You should see:** a working game made of **plain boxes, with no sound**, and a yellow label: `placeholder: art, sound missing`. That's correct. Art and Sound aren't merged yet.
 
 ### 5b · Builder 2: Art
 
-Art draws your world: the background, your character and the obstacles.
+Art builds **how it looks**: the background, the obstacles and your character.
 
 1. Open the pull request **Art: [your title]**.
 2. **Files changed** should show only `sprites.js`.
-3. Read the description. Does it describe your place and your character?
+3. Read the description. Does it match your **Looks like** line?
 4. Merge it, wait for Actions, and hard refresh your live link.
 
 **Check Art's work:**
-- [ ] It looks like **your** place.
-- [ ] You play as **your** character.
-- [ ] The obstacles fit your world.
+- [ ] The background is the place you wrote.
+- [ ] The obstacles are what you wrote (or fit your world, if you didn't say).
+- [ ] You play as the character you wrote.
 - [ ] You can **clearly see** your character and the obstacles against the background. Play one round to be sure.
 
 ✅ **You should see:** the same game, now in your world. The yellow label says `placeholder: sound missing`.
 
 ### 5c · Builder 3: Sound
 
-Sound makes the flap, score and crash sounds.
+Sound builds **how it sounds**: the flap, score and crash sounds.
 
 1. Open the pull request **Sound: [your title]**.
 2. **Files changed** should show only `sounds.js`.
-3. Read the description. Do the sounds fit your version?
+3. Read the description. Does it match your **Sounds like** line?
 4. Merge it, wait for Actions, and hard refresh your live link.
 
 **Check Sound's work:** turn your volume up, click or press Space, and play.
-- [ ] You hear a sound when you flap.
-- [ ] You hear a sound when you score.
-- [ ] You hear a sound when you crash.
+- [ ] You hear a sound when you flap, and it's close to what you asked for.
+- [ ] You hear a sound when you score, and it's close to what you asked for.
+- [ ] You hear a sound when you crash, and it's close to what you asked for.
 - [ ] **M** turns sound off and on.
 
 ✅ **You should see:** your complete game. **The yellow label is gone.** You just combined three builders' work into one game.
@@ -416,7 +413,7 @@ The team lead sends only that builder back to fix its own part.
 
 ### Core still broken? Use the answer key
 
-The club has a working copy of `game.js`, the core of the game. It follows the same plan as yours, so your title, art, sound and fix (from the list) still plug in. In the same chat, type:
+The club has a working copy of `game.js`, the core of the game. It follows the same plan as yours, so your title, how it looks, how it sounds, and how it plays (if you picked from the list) still plug in. In the same chat, type:
 
 ```text
 use the answer key
@@ -432,7 +429,7 @@ Art or Sound still broken after its one fix? Keep going. Your game still plays. 
 
 > ### 🛑 STOP 2 · Combined and playable
 >
-> All three builders are merged. Your game plays at your own live link, looks like your version, and makes sound.
+> All three builders are merged. Your game plays at your own live link, and it looks, sounds and plays the way you chose.
 
 ---
 
@@ -445,12 +442,12 @@ Art or Sound still broken after its one fix? Keep going. Your game still plays. 
 3. Replace **What is it?** with one line in this shape:
 
 ```text
-[Your title]: a Flappy Bird-style clone set in [place]. My fix: [fix]. The part that couldn't be split was [your answer, in your own words].
+[Your title]: I cloned Flappy Bird and made it mine. It looks like [...], sounds like [...], and plays differently: [...]. The part that couldn't be split was [your answer, in your own words].
 ```
 
    For example:
 
-   > SLO Flap: a Flappy Bird-style clone set in San Luis Obispo at sunset. My fix: easy mode. The part that couldn't be split was the crash check, because it has to know where the bird and the pipes are at the same moment.
+   > SLO Flap: I cloned Flappy Bird and made it mine. It looks like San Luis Obispo at sunset with a seagull, sounds like a beach, and plays differently: Easy/Normal buttons. The part that couldn't be split was the crash check, because it has to know where the bird and the pipes are at the same moment.
 
 4. Save.
 
@@ -458,7 +455,7 @@ Art or Sound still broken after its one fix? Keep going. Your game still plays. 
 
 > ### 🛑 STOP 3 · Shipped
 >
-> Your game is live, it's yours, and the portal has your link and your one-line explanation.
+> Your game is live, it looks, sounds and plays your way, and the portal has your link and your one-line explanation.
 
 ---
 
@@ -480,7 +477,7 @@ The finished game is plain HTML and JavaScript. No AI runs when someone plays it
 
 ## Keep going (after the meeting)
 
-- **Try a custom fix.** Start a new chat, point it at your repo, and describe a new feature. Ask it to follow `CONTRACT.md` and open a pull request.
+- **Change how it plays again.** Start a new chat, point it at your repo, and describe a new twist. Ask it to follow `CONTRACT.md` and open a pull request.
 - **Push your art further.** Ask for more detail in `sprites.js`: a moving skyline, day turning into night.
 
 ## Build your own clone (after you finish)
@@ -501,8 +498,9 @@ You are the orchestrator for a new clone. You lead three subagents.
 My repo: [paste the new repo link]
 
 I want to clone: [one screen of an app or game, like "a Wordle board"]
-My version: [how you want it to look and feel]
-Better because: [one fix]
+Looks like: [how you want it to look]
+Sounds like: [how you want it to sound, or "whatever fits"]
+Plays differently: [one change to how it works]
 
 Part 1. Plan, then stop.
 Split this into exactly three jobs that can run at the same time.

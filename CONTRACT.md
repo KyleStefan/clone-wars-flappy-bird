@@ -8,9 +8,9 @@ Think of three friends building one Lego car in three different rooms. If they a
 
 | Subagent | Makes these files | Uses these lines from "My version" |
 | --- | --- | --- |
-| **Core** | `game.js`, `config.js` | Title, Better because |
-| **Art** | `sprites.js` | Set in, I play as |
-| **Sound** | `sounds.js` | Set in, I play as |
+| **Core** | `game.js`, `config.js` | Title, Plays differently |
+| **Art** | `sprites.js` | Looks like |
+| **Sound** | `sounds.js` | Sounds like |
 
 Nobody edits `index.html`. It is the frame that loads the four files in this order: `config.js`, `sprites.js`, `sounds.js`, `game.js`.
 
@@ -45,15 +45,15 @@ modes: {
 
 Rules: `modes.easy.pipeGap` is at least `modes.normal.pipeGap`. Every gap is 3 to 6 times `birdSize`.
 
-**Picking `fix` from "Better because":**
+**Picking `fix` from "Plays differently":**
 
 | Member wrote something like | `fix` |
 | --- | --- |
-| Easy / Normal buttons, easy mode, pick your difficulty | `'easy-mode'` |
-| Gentler start, easier first pipes, not so hard at the beginning | `'gentle-start'` |
-| Checkpoints, don't start over from zero | `'checkpoints'` |
+| Easy/Normal buttons, easy mode, pick your difficulty | `'easy-mode'` |
+| Easier first 3 obstacles, gentle start, not so hard at the beginning | `'gentle-start'` |
+| Checkpoints every 10 points, don't start over from zero | `'checkpoints'` |
 | Anything else | `'custom'` |
-| Nothing | `'none'` |
+| Nothing, or "no change" | `'none'` |
 
 ---
 
@@ -63,9 +63,9 @@ Rules: `modes.easy.pipeGap` is at least `modes.normal.pipeGap`. Every gap is 3 t
 
 | Function | What it draws |
 | --- | --- |
-| `drawBackground(ctx, width, height, time)` | The whole canvas: sky and scenery from "Set in". `time` is seconds since the page loaded. The game sends `0` when the player wants less motion, so the picture must look complete at `time = 0`. |
+| `drawBackground(ctx, width, height, time)` | The whole canvas: sky and scenery from the place in "Looks like". `time` is seconds since the page loaded. The game sends `0` when the player wants less motion, so the picture must look complete at `time = 0`. |
 | `drawGround(ctx, width, height, groundHeight, offset)` | The ground strip from `y = height - groundHeight` to `y = height`. `offset` is how many pixels the ground has scrolled. Use it to slide a pattern left. |
-| `drawBird(ctx, x, y, size, velocity)` | The character from "I play as", centered on `x, y`, fitting inside a `size` by `size` box. `velocity` is negative going up, positive falling. You may tilt it. |
+| `drawBird(ctx, x, y, size, velocity)` | The character from "Looks like" ("I play as..."), centered on `x, y`, fitting inside a `size` by `size` box. `velocity` is negative going up, positive falling. You may tilt it. |
 | `drawPipe(ctx, x, gapTop, gapBottom, pipeWidth, height)` | One pair of obstacles. `x` is the left edge. The top one fills `y = 0` to `y = gapTop`. The bottom one fills `y = gapBottom` to `y = height`. `height` is the top of the ground, not the full canvas. |
 
 Rules for every drawing function:
@@ -90,7 +90,7 @@ Rules for every drawing function:
 
 Rules:
 
-- Make each sound match "Set in" and "I play as" (a seagull chirp, a subway horn, a laser zap).
+- Make each sound match the member's "Sounds like" line (a seagull squawk, a subway ding, a laser pew). If it says "whatever fits", match "Looks like".
 - Never play a melody from an existing song, movie, TV show or game (no theme songs). Short original beeps and effects only.
 - Create the audio context the first time a sound plays, never when the page loads. Use this helper exactly:
 
@@ -173,7 +173,7 @@ Rules:
 | `overlay` | The box over the game on the Ready and Game over screens. Show it with `overlay.hidden = false;`, hide it with `overlay.hidden = true;` |
 | `overlay-title` | Big text: `CONFIG.title` on Ready, `'Game over'` on Game over |
 | `overlay-text` | Lines under the title. Join lines with `'\n'` and set `.textContent` |
-| `fix-buttons` | Empty box for buttons your fix adds |
+| `fix-buttons` | Empty box for buttons a "plays differently" change adds |
 | `missing-label` | The missing-parts label |
 | `sr` | Hidden text for screen readers |
 
@@ -307,9 +307,9 @@ requestAnimationFrame(frame);
 
 ---
 
-## 5 · Fixes (Core subagent)
+## 5 · Plays differently (Core subagent)
 
-Build only the fix that matches `CONFIG.fix`.
+Build only the change that matches `CONFIG.fix`.
 
 - **`'easy-mode'`:** the Movement code above already switches gaps and speeds. Also add two buttons, **Easy** and **Normal**, into `#fix-buttons`, with exactly this code:
 
@@ -354,6 +354,6 @@ What **can** be split: the art and the sound. The game only needs their **names*
 
 The Core subagent builds `game.js` from scratch, and it's the file most likely to break. The club keeps a working `game.js` in a separate repo, the answer key: **https://github.com/KyleStefan/clone-wars-answer-key**
 
-Because it follows this exact plan, you can swap in its `game.js` and your `config.js`, `sprites.js` and `sounds.js` still plug in. You keep your art, your sound, your title, and any fix from the list. You lose only a `'custom'` fix.
+Because it follows this exact plan, you can swap in its `game.js` and your `config.js`, `sprites.js` and `sounds.js` still plug in. You keep your title, how it looks, how it sounds, and how it plays if you picked from the list. You lose only your own `'custom'` idea.
 
 Agents: **never read or copy the answer key unless the member types "use the answer key."** See `AGENTS.md` for the swap steps.

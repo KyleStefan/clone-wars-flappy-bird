@@ -25,15 +25,17 @@ You lead. You plan, start the subagents, check their work and make sure three pu
 ### Step 1 · Plan, then stop
 
 1. Read `CONTRACT.md` and this file. Change nothing.
-2. Check the member's **My version** block. If Title, Set in, I play as or Better because is blank or still has square brackets like `[a place or vibe]`, stop and ask the member to fill it in. Don't guess.
+2. Check the member's **My version** block. If Title, Looks like, Sounds like or Plays differently is blank or still has square brackets like `[a name for your game]`, stop and ask the member to fill it in. Don't guess.
 3. Reply with the plan in this exact shape, filled in with their version:
 
    > **Here's the plan for [Title].**
    >
    > **Three jobs that can run at the same time:**
-   > 1. **Core** builds `game.js` and `config.js`: the game rules, the title "[Title]" and your fix: [Better because].
-   > 2. **Art** builds `sprites.js`: [Set in] as the background, and you play as [I play as].
-   > 3. **Sound** builds `sounds.js`: flap, score and crash sounds that fit [Set in].
+   > 1. **Core** builds `game.js` and `config.js`: the game rules, the title "[Title]", and **how it plays differently**: [Plays differently].
+   > 2. **Art** builds `sprites.js`: **how it looks**: [Looks like].
+   > 3. **Sound** builds `sounds.js`: **how it sounds**: [Sounds like].
+   >
+   > **You changed three things about the game, and each builder builds one of them.**
    >
    > **Why they don't collide:** each job makes different files on its own branch. They only share names from `CONTRACT.md`, like `drawBird` and `flap`.
    >
@@ -127,7 +129,7 @@ The member evaluated one builder's work and something is wrong. They'll describe
 1. Work on a new branch named `answer-key` from `main`.
 2. Read `game.js` from the public repo **https://github.com/KyleStefan/clone-wars-answer-key** (branch `main`).
 3. Replace the member's `game.js` with it, **unchanged, every line.** If the member hasn't merged Core yet, also copy their Core branch's `config.js` onto this branch.
-4. Look at `fix` in the member's `config.js`. If it's `'easy-mode'`, `'gentle-start'`, `'checkpoints'` or `'none'`, leave it. If it's `'custom'`, change it to `'none'` and tell the member: "The answer key doesn't include your custom fix, so it's turned off. Your title, art and sound are still yours."
+4. Look at `fix` in the member's `config.js`. If it's `'easy-mode'`, `'gentle-start'`, `'checkpoints'` or `'none'`, leave it. If it's `'custom'`, change it to `'none'` and tell the member: "The answer key doesn't include your own 'plays differently' idea, so the game plays like the original. Your title, how it looks and how it sounds are still yours."
 5. Don't touch `sprites.js` or `sounds.js`.
 6. Open a pull request titled `Use the answer key`. Don't merge. Tell the member to merge it in place of Core, then keep going with Art and Sound.
 
@@ -139,9 +141,9 @@ If you can't read the other repo, tell the member to follow **Use the answer key
 
 | Subagent | Branch | Your files (create or change only these) | My version lines you use |
 | --- | --- | --- | --- |
-| **Core** | `clone-wars-core` | `game.js`, `config.js` | Title, Better because |
-| **Art** | `clone-wars-art` | `sprites.js` | Set in, I play as |
-| **Sound** | `clone-wars-sound` | `sounds.js` | Set in, I play as |
+| **Core** | `clone-wars-core` | `game.js`, `config.js` | Title, Plays differently |
+| **Art** | `clone-wars-art` | `sprites.js` | Looks like |
+| **Sound** | `clone-wars-sound` | `sounds.js` | Sounds like (and Looks like, if Sounds like says "whatever fits") |
 
 Create your branch from `main`. The other two subagents are working at the same time on their own branches. You will not see their files. **That is normal. Never create another subagent's files.** Trust `CONTRACT.md`.
 
@@ -172,8 +174,8 @@ Create your branch from `main`. The other two subagents are working at the same 
 ### Core subagent job
 
 1. Read `CONTRACT.md` sections 1, 4 and 5 all the way through.
-2. Create `config.js`: set `window.GAME_CONFIG` with every name in the Settings table. `title` is the member's Title. `fix` comes from Better because, using the table in section 1. Keep the Normal values unless the member's fix says otherwise.
-3. Create `game.js`: build the game so it checks **every box** in section 4. **Where a box shows code, copy that code exactly.** Build the fix from section 5 that matches `fix`.
+2. Create `config.js`: set `window.GAME_CONFIG` with every name in the Settings table. `title` is the member's Title. `fix` comes from **Plays differently**, using the table in section 1. Keep the Normal values unless the member's Plays differently line says otherwise.
+3. Create `game.js`: build the game so it checks **every box** in section 4. **Where a box shows code, copy that code exactly.** Build the change from section 5 that matches `fix`.
 4. Before you finish, reread section 4 one box at a time. Fix any box you missed.
 5. `sprites.js` and `sounds.js` won't exist on your branch. That's normal. The game must still run with its placeholder boxes and no sound.
 6. Finish the way every subagent finishes (above). Branch `clone-wars-core`, title `Core: [Title]`.
@@ -182,16 +184,16 @@ Create your branch from `main`. The other two subagents are working at the same 
 
 1. Read `CONTRACT.md` section 2 all the way through.
 2. Create `sprites.js`: set `window.SPRITES` with the four drawing functions, exact names and inputs.
-   - `drawBackground` and `drawGround`: the member's **Set in**. Simple, bold shapes and silhouettes, not tiny details.
-   - `drawBird`: the member's **I play as**, fitting in the `size` box.
-   - `drawPipe`: obstacles that fit **Set in** (skyscrapers, palm trees, laser gates). They must fill exactly the pipe rectangles.
+   - `drawBackground` and `drawGround`: the place in the member's **Looks like** line. Simple, bold shapes and silhouettes, not tiny details.
+   - `drawBird`: the character in **Looks like** ("I play as..."), fitting in the `size` box. No character named? Pick one that fits the place.
+   - `drawPipe`: the obstacles in **Looks like** (skyscrapers, palm trees, laser gates). None named? Pick ones that fit the place. They must fill exactly the pipe rectangles.
 3. Check readability: the character and obstacles need dark outlines and colors that stand out from the sky.
 4. Finish the way every subagent finishes (above). Branch `clone-wars-art`, title `Art: [Title]`.
 
 ### Sound subagent job
 
 1. Read `CONTRACT.md` section 3 all the way through.
-2. Create `sounds.js`: set `window.SOUNDS` with `flap`, `score` and `crash`, using the exact `getAudio` helper. Make each sound fit the member's **Set in** and **I play as**.
+2. Create `sounds.js`: set `window.SOUNDS` with `flap`, `score` and `crash`, using the exact `getAudio` helper. Make each sound match the member's **Sounds like** line. If it says "whatever fits" or doesn't cover a sound, match the **Looks like** line.
 3. Keep every sound under 0.5 seconds and quiet (gain 0.2 or less).
 4. Finish the way every subagent finishes (above). Branch `clone-wars-sound`, title `Sound: [Title]`.
 
@@ -204,7 +206,7 @@ Create your branch from `main`. The other two subagents are working at the same 
 - **Plain files only.** Classic scripts that set `window` globals. No `import`, `export`, modules, frameworks, packages or build steps.
 - **Nothing from the internet.** No `fetch`, no web addresses, no API keys, no image files, no audio files, no web fonts.
 - **No `innerHTML`.** Use `textContent`.
-- **No brands or real people.** Don't use the words "Flappy Bird", logos, or real people's names or faces. If "Set in" or "I play as" names a movie, show or game, match the vibe with original designs: no named characters, famous ships, logos or theme songs.
+- **No brands or real people.** Don't use the words "Flappy Bird", logos, or real people's names or faces. If "Looks like" or "Sounds like" names a movie, show or game, match the vibe with original designs: no named characters, famous ships, logos or theme songs.
 - **Never merge.** The member merges, one pull request at a time.
 - **Never read or copy the answer key** unless the member typed "use the answer key".
 - **If something is unclear, stop and ask.** Don't guess.
