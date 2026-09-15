@@ -191,7 +191,7 @@ Keep it simple: bold shapes and silhouettes draw well. Tiny details (a specific 
 
 ### Pick your fix ("Better because")
 
-The original game is famous for being brutally hard. Pick one way to make yours better:
+Pick one way to make yours better than the original:
 
 | Write this | What it does |
 | --- | --- |
