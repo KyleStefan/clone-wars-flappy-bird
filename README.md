@@ -159,71 +159,17 @@ Your live link stays the same forever, so you submit it now, before you build. W
 
 ---
 
-## Step 2 · Make it yours
+## Step 2 · Make it yours: write your prompt
 
-⏱️ **About 3 minutes**
+⏱️ **About 4 minutes**
 
-Fill in your version. The team lead passes each line to the builder who needs it.
+**Nothing goes into Codex yet.** In this step you write the instructions for your AI team in your note. You'll paste them into Codex in Step 3.
 
-| Line | What to write | Who uses it |
-| --- | --- | --- |
-| **Title** | A name for your game, 30 characters max | Core builder |
-| **Set in** | A place or a vibe. This becomes the background, obstacles and sounds. | Art and Sound builders |
-| **I play as** | Your character | Art and Sound builders |
-| **Better because** | Your fix. Pick one below, or write your own. | Core builder |
+### 2a · Copy the prompt into your note
 
-### Need ideas?
+Click the **copy icon** (two squares) at the top right of the gray box below. Paste it into your **note** from Step 1c.
 
-| Title | Set in | I play as |
-| --- | --- | --- |
-| Galaxy Flap | a desert planet with two suns, a space-station trench with laser gates as obstacles | a small starfighter |
-| SLO Flap | San Luis Obispo at sunset, Bishop Peak in the back, palm trees as obstacles | a seagull |
-| Big Apple Dash | New York City at night, skyscrapers as obstacles | a pigeon |
-| Orbit | outer space, asteroids as obstacles | a tiny rocket |
-| Farm Run | a Cal Poly farm field, hay bale stacks as obstacles | a chicken |
-| Pismo Glide | Pismo Beach on a sunny day, pier posts as obstacles | a pelican |
-
-Want to pick what the obstacles look like? Put it in your **Set in** line, like the examples. If you don't, the Art builder picks something that fits.
-
-Keep it simple: bold shapes and silhouettes draw well. Tiny details (a specific logo, a real person, your apartment's exact couch) don't.
-
-**Inspired by a movie or show? Go for the vibe, not the brand.** "A desert planet with two suns" and "a small starfighter" are great. Named characters, famous ships, logos and theme songs aren't allowed. No real people either.
-
-### Pick your fix ("Better because")
-
-Pick one way to make yours better than the original:
-
-| Write this | What it does |
-| --- | --- |
-| **Easy mode** | Easy and Normal buttons on the start screen. Easy has bigger gaps and slower obstacles. |
-| **Gentle start** | The first three obstacles have bigger gaps and move slower, so you don't die in two seconds. |
-| **Checkpoints** | Every 10 points is a checkpoint. After a crash, you start again from your last checkpoint, not from zero. |
-| **Your own idea** | Describe it in one sentence. The Core builder will try it. Custom fixes are riskier and aren't in the answer key. |
-
-✅ **You should see:** your four lines written down, ready to paste in Step 3.
-
----
-
-## Step 3 · Brief your team
-
-⏱️ **About 4 minutes, including waiting for the plan**
-
-### The one idea behind today (30-second read)
-
-Three builders can work at the same time only if they **agree on names before they start**. The game will call `drawBird` to draw your character. The Art builder writes a `drawBird` that draws a seagull. The Core builder writes a game that calls `drawBird`. They never talk to each other. The shared names in `CONTRACT.md` are why their parts fit.
-
-**What can't be split:** the crash check. Every moment, the game asks "is the bird touching a pipe?" That needs the bird **and** the pipes at the same time, so it stays with one builder (Core).
-
-**Rule of thumb:** if two parts need each other every single moment, keep them together. If one only needs the other's name, split them.
-
-### Brief them
-
-1. In Codex, start a **new** chat with GitHub available. <!-- CONFIRM after Kyle's test: exact button to start a chat on your repo. -->
-2. Make sure **GPT-5.6 Luna** is selected.
-3. Click the **copy icon** (two squares) at the top right of the gray prompt box below.
-4. Paste it into your **note** from Step 1c, not straight into Codex. (In Codex, pressing Enter sends the message before you're done.)
-5. In your note, replace everything in **[square brackets]** with your **repo link** (the `github.com` one from your note, ending in `/clone-wars`) and your four lines from Step 2. Delete the brackets and the words inside them.
-6. Copy the finished prompt from your note, paste it into Codex, and send it.
+(Why a note and not Codex? In Codex, pressing Enter sends the message before you're done filling it in.)
 
 ```text
 You are the orchestrator for my Clone Wars build. You lead a team of
@@ -249,6 +195,81 @@ opens its own pull request. Check their work, then give me the three
 pull request links in merge order: Core, Art, Sound.
 Do not merge anything, and do not combine them.
 ```
+
+### 2b · Fill in the five brackets
+
+In your note, replace each **[square bracket]**, including the brackets themselves. Only these five lines change. Leave everything else exactly as it is.
+
+| Line in the prompt | What to write | Which builder uses it |
+| --- | --- | --- |
+| **My repo** | Your **repo link** from Step 1c. It ends in `/clone-wars`. | The team lead |
+| **Title** | A name for your game, 30 characters max | Core |
+| **Set in** | A place or a vibe. It becomes your background, obstacles and sounds. | Art and Sound |
+| **I play as** | Your character | Art and Sound |
+| **Better because** | Your fix. Pick one from the list below, or write your own. | Core |
+
+**Here's what the middle of a finished prompt looks like:**
+
+```text
+My repo: https://github.com/your-username/clone-wars
+
+My version:
+- Title: SLO Flap
+- Set in: San Luis Obispo at sunset, Bishop Peak in the back, palm trees as obstacles
+- I play as: a seagull
+- Better because: easy mode
+```
+
+### Need ideas?
+
+| Title | Set in | I play as |
+| --- | --- | --- |
+| Galaxy Flap | a desert planet with two suns, a space-station trench with laser gates as obstacles | a small starfighter |
+| SLO Flap | San Luis Obispo at sunset, Bishop Peak in the back, palm trees as obstacles | a seagull |
+| Big Apple Dash | New York City at night, skyscrapers as obstacles | a pigeon |
+| Orbit | outer space, asteroids as obstacles | a tiny rocket |
+| Farm Run | a Cal Poly farm field, hay bale stacks as obstacles | a chicken |
+| Pismo Glide | Pismo Beach on a sunny day, pier posts as obstacles | a pelican |
+
+Want to pick what the obstacles look like? Put it in your **Set in** line, like the examples. If you don't, the Art builder picks something that fits.
+
+Keep it simple: bold shapes and silhouettes draw well. Tiny details (a specific logo, a real person, your apartment's exact couch) don't.
+
+**Inspired by a movie or show? Go for the vibe, not the brand.** "A desert planet with two suns" and "a small starfighter" are great. Named characters, famous ships, logos and theme songs aren't allowed. No real people either.
+
+### Pick your fix ("Better because")
+
+Pick one way to make yours better than the original:
+
+| Write this | What it does |
+| --- | --- |
+| **easy mode** | Easy and Normal buttons on the start screen. Easy has bigger gaps and slower obstacles. |
+| **gentle start** | The first three obstacles have bigger gaps and move slower, so you don't die in two seconds. |
+| **checkpoints** | Every 10 points is a checkpoint. After a crash, you start again from your last checkpoint, not from zero. |
+| **Your own idea** | Describe it in one sentence. The Core builder will try it. Custom fixes are riskier and aren't in the answer key. |
+
+✅ **You should see:** the whole prompt in your note, with your repo link and your four answers filled in, and **no square brackets left**.
+
+---
+
+## Step 3 · Brief your team
+
+⏱️ **About 3 minutes, including waiting for the plan**
+
+### The one idea behind today (30-second read)
+
+Three builders can work at the same time only if they **agree on names before they start**. The game will call `drawBird` to draw your character. The Art builder writes a `drawBird` that draws a seagull. The Core builder writes a game that calls `drawBird`. They never talk to each other. The shared names in `CONTRACT.md` are why their parts fit.
+
+**What can't be split:** the crash check. Every moment, the game asks "is the bird touching a pipe?" That needs the bird **and** the pipes at the same time, so it stays with one builder (Core).
+
+**Rule of thumb:** if two parts need each other every single moment, keep them together. If one only needs the other's name, split them.
+
+### Send the prompt to Codex
+
+1. In Codex, start a **new** chat with GitHub available. <!-- CONFIRM after Kyle's test: exact button to start a chat on your repo. -->
+2. Make sure **GPT-5.6 Luna** is selected.
+3. Copy your **finished prompt** from your note (everything, top to bottom).
+4. Paste it into Codex and send it.
 
 The team lead replies with a plan. **Before you type go, check four things:**
 
