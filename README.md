@@ -1,6 +1,6 @@
 # Clone Wars · Session 03
 
-**Ben rebuilt Photoshop over a whole build night. You've got about 40 minutes (plus setup, if it's your first time). Clone a game everyone knows, make it yours, and make it better.**
+**Clone a game everyone knows, make it yours, and make it better. You've got about 40 minutes (plus setup, if it's your first time).**
 
 Today you clone a game inspired by Flappy Bird. You don't build it alone, and you don't build it one piece at a time. You **brief a team of AI agents**: one team lead and three builders who work **at the same time**. Then you check their work, ship it, and play it at your own link.
 
