@@ -10,6 +10,12 @@ Nobody's game will look the same. Yours might be a seagull over San Luis Obispo 
 
 **Finish line:** your game plays at your own live link, it looks, sounds and plays the way you chose, and your link is in the club portal.
 
+> **Before you click anything, you need two things:**
+> 1. A **GitHub account**
+> 2. **Codex**, signed in with a **personal** email (not calpoly.edu)
+>
+> Missing either one? Do [Step 0](#step-0--before-you-start) first. In the room and not set up? Follow along on a neighbor's screen and build yours after the meeting.
+
 ---
 
 ## Stuck? Ask your AI first
@@ -69,7 +75,7 @@ You're the **boss**. You give one set of instructions to a **team lead** agent (
 | --- | --- |
 | **Repo** (repository) | A folder of project files on GitHub. |
 | **Template** | The club's starter repo. You make your own copy. You never change the club's copy. |
-| **Live link** | Your game on the internet, like `https://your-name.github.io/clone-wars/`. It never changes, even when your game does. |
+| **Live link** | Your game on the internet, like `https://your-name.github.io/clone-wars/`. It stays the same as your game changes. |
 | **Orchestrator** | The team lead agent. It plans and starts the builders. |
 | **Subagent** | A builder agent. It does one job, only touches its own files, and hands you its own pull request. |
 | **Branch** | A separate copy of your files where a builder works without touching your real version (`main`). |
@@ -90,21 +96,17 @@ You're the **boss**. You give one set of instructions to a **team lead** agent (
    - Signing up with your `calpoly.edu` email fails without telling you why.
    - The school Codex account can't use the GitHub connector, so it won't work today.
    - Stuck on the offer page? Open a private window: **Cmd+Shift+N** on Mac (Chrome or Safari), **Ctrl+Shift+N** on Windows (Chrome, or Edge's InPrivate window). Go to the student offer, sign in there with your personal email, then come back to a normal window.
-3. **Connect GitHub to Codex.** In Codex, find the GitHub connector (sometimes called a plugin or app), install it, and sign in to GitHub.
-   - When GitHub asks which repositories Codex can see, choose **All repositories**. ("Only select repositories" won't work yet, because the repo you'll use today doesn't exist until Step 1.)
-   - Picked the wrong option or skipped the question? You can change it any time on GitHub. See [Codex can't see my repo](docs/HELP.md#codex-setup).
-   <!-- CONFIRM after Kyle's test: exact place to find the GitHub connector in the Codex app members use. -->
-4. **Pick the cheap model.** In the model picker, choose **GPT-5.6 Luna**. If you don't see it, pick the cheapest, fastest model in the list. Bigger models burn through your usage fast, and today runs four agents.
+3. **Pick the cheap model.** In the model picker, choose **GPT-5.6 Luna**. If you don't see it, pick the cheapest, fastest model in the list. Bigger models burn through your usage fast, and today runs four agents.
 
 **Stuck on any of this?** Codex isn't set up yet, so use ChatGPT (laptop or phone) with the [help prompt](#stuck-ask-your-ai-first). Tell it which step you're on and attach a screenshot.
 
-✅ **You should see:** Codex open with your personal account, **GPT-5.6 Luna** selected, and GitHub connected.
+✅ **You should see:** Codex open with your personal account and **GPT-5.6 Luna** selected. (You'll connect Codex to GitHub in Step 1, right after you make your repo.)
 
 ---
 
-## Step 1 · Copy the template, go live, submit your link
+## Step 1 · Copy the template, connect Codex, go live, submit your link
 
-⏱️ **About 7 minutes**
+⏱️ **About 9 minutes**
 
 ### 1a · Make your own copy
 
@@ -120,7 +122,34 @@ You're the **boss**. You give one set of instructions to a **team lead** agent (
 
 ⚠️ Look at the address bar. It must have **your** username in it, not `KyleStefan`. Last time, lots of people gave Codex the club's link by mistake.
 
-### 1b · Turn on your live link
+### 1b · Give Codex access to this repo only
+
+Codex only needs to see today's repo. Don't give it access to all your GitHub projects (class work, internship code, anything private).
+
+**Never connected GitHub to Codex before:**
+1. In Codex, find the **GitHub** connector (sometimes called a plugin or app) and click to connect it. <!-- CONFIRM after Kyle's test: exact place to find the GitHub connector in the Codex app members use. -->
+2. Sign in to GitHub if it asks.
+3. If it asks where to install, pick **your own account**.
+4. Choose **Only select repositories**, pick **clone-wars**, and click **Install** (or **Save**).
+
+**Already connected GitHub to Codex before (like in Session 02):**
+1. On GitHub, click your profile picture → **Settings** → **Applications** (left sidebar) → **Installed GitHub Apps**.
+2. Find the ChatGPT / Codex app and click **Configure**.
+3. Under **Repository access**:
+   - Set to **Only select repositories**? Click **Select repositories** and add **clone-wars**.
+   - Set to **All repositories**? We recommend switching to **Only select repositories** and choosing **clone-wars**, plus any other repos you still use with Codex.
+4. Click **Save**.
+
+**Check that it worked.** In Codex, start a new chat, select **GPT-5.6 Luna**, and send this (with your username):
+
+```text
+Can you see my GitHub repo YOUR-USERNAME/clone-wars? Answer yes or no,
+then list the files you see. Don't change anything.
+```
+
+✅ **You should see:** "yes," and a list that includes `README.md`, `CONTRACT.md`, `AGENTS.md` and `index.html`. Says no? See [Codex can't see my repo](docs/HELP.md#codex-setup).
+
+### 1c · Turn on your live link
 
 1. In **your** repo, click **Settings** (top bar, far right). On a small screen it may be hidden under a **⋯** menu at the end of that bar.
 2. In the left sidebar, click **Pages**.
@@ -132,7 +161,7 @@ You're the **boss**. You give one set of instructions to a **team lead** agent (
 
 Seeing a **404** page? That's normal for the first minute or two. Wait, then refresh. Still 404 after 5 minutes? See [Pages shows 404](docs/HELP.md#pages-shows-404).
 
-### 1c · Save both links
+### 1d · Save both links
 
 Open a note (Notes, Google Docs, anything) and paste both links into it. You'll need them again.
 
@@ -141,9 +170,9 @@ Open a note (Notes, Google Docs, anything) and paste both links into it. You'll 
 | **Repo link** | On GitHub, click your repo name (`clone-wars`) at the top of the page, then copy the address bar. It must look exactly like `https://github.com/YOUR-USERNAME/clone-wars`, with **nothing after `clone-wars`**. If you copy it while you're on the Settings page, it ends in `/settings/pages`, which is wrong. | **Give this one to Codex.** |
 | **Live link** | Copy it from the **Copy link** button on your starter page. It looks like `https://YOUR-USERNAME.github.io/clone-wars/` | **Submit this one to the portal.** Share it with friends. |
 
-### 1d · Submit your live link to the portal now
+### 1e · Submit your live link to the portal now
 
-Your live link stays the same forever, so you submit it now, before you build. When you merge later, the same link shows your finished game.
+Your live link stays the same as you update this repo, so you submit it now, before you build. When you merge later, the same link shows your finished game.
 
 1. Open **[calpolyvibecoding.com/portal](https://calpolyvibecoding.com/portal)** and log in (or sign up).
 2. Open **Builds**.
@@ -167,7 +196,7 @@ Your live link stays the same forever, so you submit it now, before you build. W
 
 ### 2a · Copy the prompt into your note
 
-Click the **copy icon** (two squares) at the top right of the gray box below. Paste it into your **note** from Step 1c.
+Click the **copy icon** (two squares) at the top right of the gray box below. Paste it into your **note** from Step 1d.
 
 (Why a note and not Codex? In Codex, pressing Enter sends the message before you're done filling it in.)
 
@@ -204,7 +233,7 @@ In your note, replace each **[square bracket]**, including the brackets themselv
 
 | Line in the prompt | What to write | Built by |
 | --- | --- | --- |
-| **My repo** | Your **repo link** from Step 1c. It ends in `/clone-wars`. | The team lead |
+| **My repo** | Your **repo link** from Step 1d. It ends in `/clone-wars`. | The team lead |
 | **Title** | A name for your game, 30 characters max | Core |
 | **Looks like** | Where it's set, what the obstacles are, and who you play as | Art |
 | **Sounds like** | What the flap, score and crash sound like. Not sure? Write "whatever fits." | Sound |
@@ -275,7 +304,7 @@ The team lead replies with a plan. **Before you type go, check four things:**
 - [ ] **It names the part that can't be split:** the crash check stays with Core.
 - [ ] **You'll get three pull requests**, one per builder, to merge in order: Core, Art, Sound.
 
-Something's off? Tell it what to change in plain words. Otherwise type:
+Something's off? Tell it what to change in plain words. Otherwise, **write down the time on your clock**, then type:
 
 ```text
 go
@@ -293,15 +322,25 @@ While the builders work:
 
 - **Look for three subagents running at the same time.** Depending on your Codex app, they show up as separate threads, a list of agents, or updates in the main chat. <!-- CONFIRM after Kyle's test: exactly where subagent threads appear. -->
 - **Notice what each one is doing.** Core is writing the rules of the game. Art is drawing your world. Sound is making your beeps. None of them is waiting for the others.
+- **Screenshot the three builders running.** Seeing them work at the same time is the best proof your team really ran in parallel.
 - **Test yourself while you wait.** Without scrolling up: why can the Art builder work at the same time as the Core builder? And what's the one part that couldn't be split, and why? You'll write your answer in Step 6. (Stuck? Reread [the one idea](#the-one-idea-behind-today-30-second-read).)
 
 > **Codex says you hit your usage limit?** Stop here. Nothing is lost: your live link is already in the portal. Watch a neighbor's build, then finish yours after the meeting. See [I ran out of usage](docs/HELP.md#i-ran-out-of-usage).
 >
 > **Following along on a neighbor's screen?** Ask them to show you their plan, their subagents and their three pull requests. Start your own after the meeting with this page.
 
-When all three builders finish, the team lead sends you a summary: **three pull request links** (Core, Art, Sound) with when each builder started and finished.
+When all three builders finish, the team lead sends you a summary: **three pull request links** (Core, Art, Sound) and when it says each builder started and finished.
 
-- **Check that they really worked at the same time.** Look at the **Started** times. All three within a minute or so of each other means three subagents ran in parallel. If it says **one after another**, subagents weren't available in your Codex app. You still get three parts to evaluate, it just took longer.
+**Did they really work at the same time? Check the evidence, not just the claim.** The team lead writes its own start times, so treat those as a claim. Here's evidence you can check yourself:
+
+1. **What you saw.** Did you watch three builders working at once? That's the best proof.
+2. **GitHub's own times.** On your repo, click **Pull requests**. Under each one it says "opened … minutes ago." Hover over that to see the exact time. GitHub records these, so the agents can't change them.
+   - **At the same time:** the three pull requests opened close together, often not in Core, Art, Sound order. (The smallest job, usually Sound, tends to finish first.)
+   - **One after another:** Core opened first, then Art several minutes later, then Sound several minutes after that.
+3. **The summary itself.** If it says **one after another**, subagents weren't available in your Codex app. You still get three parts to evaluate, it just took longer.
+
+Checking a claim against evidence is part of the job.
+
 - Missing a link? Open your repo on GitHub and click **Pull requests**. You should see `Core: [your title]`, `Art: [your title]` and `Sound: [your title]`. Still missing one? See [I don't have a pull request](docs/HELP.md#i-dont-have-a-pull-request).
 
 ✅ **You should see:** three pull requests, one per builder, none merged yet.
@@ -489,7 +528,7 @@ Want to clone something other than Flappy Bird? Use the same method on your own.
 - **Keep it to one screen and one thing to do.** A Wordle board, a Snake game, one Duolingo lesson. Not "all of Spotify."
 - Same rules as today: plain HTML and JavaScript, no web addresses, no API keys, no brands.
 
-**1. Make a new repo.** On GitHub, click **+** (top right) → **New repository**. Name it (like `my-clone`), choose **Public**, check **Add a README file**, and click **Create repository**.
+**1. Make a new repo.** On GitHub, click **+** (top right) → **New repository**. Name it (like `my-clone`), choose **Public**, check **Add a README file**, and click **Create repository**. Then give Codex access to that repo only, the same way as [Step 1b](#1b--give-codex-access-to-this-repo-only).
 
 **2. Brief a new team.** Start a new Codex chat on **GPT-5.6 Luna**. Fill in the brackets in your note first, then paste:
 

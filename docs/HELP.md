@@ -52,10 +52,10 @@ Sign out and sign in with your personal account. The school account can't use th
 The GitHub connector needs permission to see your repositories.
 1. On GitHub, click your profile picture → **Settings** → **Applications** (left sidebar) → **Installed GitHub Apps**.
 2. Find the ChatGPT / Codex app and click **Configure**.
-3. Under **Repository access**, choose **All repositories**, or add your `clone-wars` repo. Save.
+3. Under **Repository access**, choose **Only select repositories** and add your `clone-wars` repo. Save. (Avoid **All repositories**. Codex only needs today's repo.)
 4. Start a **new** chat in Codex and try again.
 
-This works any time, including if you skipped the question or picked "Only select repositories" when you installed it. The app isn't in that list at all? The connector was never installed. Install it from Codex first.
+This works any time, including if you skipped the question when you installed it. The app isn't in that list at all? The connector was never installed. Install it from Codex first.
 
 **I can't find GPT-5.6 Luna.**
 Pick the cheapest, fastest model in the list. Avoid the biggest one; it uses your allowance several times faster.

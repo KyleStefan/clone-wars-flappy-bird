@@ -88,6 +88,8 @@ When all three are done, check each pull request **separately**:
 
    Use the real clock times. Never make them up. If you can't see exact times, write "not shown".
 
+   Then add: "These times are from my own records. To check for yourself, hover over each pull request's 'opened' time on GitHub." 
+
 ### Fallbacks
 
 1. **You can't start subagents here.** Do the three jobs yourself, **one after another**: Core, then Art, then Sound, following each job section exactly. Still use three branches and three pull requests. Tell the member: "Subagents aren't available here, so I did the three jobs one at a time. You still get three pull requests to check."
