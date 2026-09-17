@@ -131,10 +131,11 @@ Do not merge anything, and do not combine them.
 | **Checkpoints every 10 points** | After a crash, you restart from your last checkpoint (10, 20, 30…). |
 | **Your own idea** | One sentence. Riskier, and not covered by the answer key. |
 
-**More ways to change it up**
+**Three examples**
 
 | Title | Looks like | Sounds like | Plays differently |
 | --- | --- | --- | --- |
+| Galaxy Flap | Star Wars-inspired: a desert planet with two suns, laser gates as obstacles. I fly a small starfighter. | a laser pew, a hyperspace whoosh, an explosion | Lasers shoot from the right at different heights, and I dodge them |
 | SLO Flap | San Luis Obispo at sunset, palm trees as obstacles. I play as a seagull. | a squawk, a beach bell, a splash | Easy/Normal buttons |
 | Pigeon Flap | New York at night, skyscrapers as obstacles. I play as a pigeon. | a coo, a subway ding, a taxi horn | Easier first 3 obstacles |
 
