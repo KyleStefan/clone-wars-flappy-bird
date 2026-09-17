@@ -66,7 +66,7 @@ In the room and not set up? Follow along on a neighbor's screen, then build your
 **Make a new project. Don't reuse an old one.** An old project is still tied to whatever repository you used it for last, and Codex will quietly work on that one instead of yours. A new project starts connected to nothing.
 
 1. In Codex, create a **new project** and name it **Clone Wars**.
-2. Connect it to **GitHub**. Give it access to **only this repository**, not every repository in your account.
+2. Connect it to **GitHub**. Connecting for the first time? In Codex, click **Plugins**, search for **GitHub**, and connect it there. Give it access to **only this repository**, not every repository in your account.
 3. Work in that project for the rest of today.
 
 **Already connected GitHub to Codex before?** On GitHub, click your profile picture → **Settings** → **Applications** → **Installed GitHub Apps** → the ChatGPT/Codex app → **Configure**. Under **Repository access**, choose **Only select repositories**, add **clone-wars**, and click **Save**.
