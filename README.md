@@ -129,7 +129,7 @@ Do not merge anything, and do not combine them.
 | **Easy/Normal buttons** | Easy and Normal buttons on the start screen. Easy has bigger gaps and slower obstacles. |
 | **Easier first 3 obstacles** | The first three gaps are bigger and move slower. |
 | **Checkpoints every 10 points** | After a crash, you restart from your last checkpoint (10, 20, 30…). |
-| **Your own idea** | One sentence. Riskier, and not covered by the answer key. |
+| **Your own idea** | One sentence, like Galaxy Flap's: *lasers shoot from the right side of the screen to the left at different heights, and I have to dodge them.* Riskier, and not covered by the answer key. |
 
 **Three examples**
 
