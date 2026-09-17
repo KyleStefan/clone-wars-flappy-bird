@@ -61,16 +61,17 @@ In the room and not set up? Follow along on a neighbor's screen, then build your
 3. **Owner:** your account. **Repository name:** `clone-wars`. Choose **Public**. Click **Create repository**.
 4. Check the address bar. It must say `github.com/YOUR-USERNAME/clone-wars`. If it says `KyleStefan`, you're still on the club template. ([Help](docs/HELP.md#6-i-used-the-club-template-instead-of-my-own-repository))
 
-### 1b. Connect GitHub to Codex (this repository only)
+### 1b. Start a new Codex project called Clone Wars
 
-Codex works on your files through the **GitHub connector** inside Codex. "GitHub available" means that connector is connected. You don't need a separate GitHub chat or tab.
+**Make a new project. Don't reuse an old one.** An old project is still tied to whatever repository you used it for last, and Codex will quietly work on that one instead of yours. A new project starts connected to nothing.
 
-Give Codex access to **only this repository**, not every repository in your account.
+1. In Codex, create a **new project** and name it **Clone Wars**.
+2. Connect it to **GitHub**. Give it access to **only this repository**, not every repository in your account.
+3. Work in that project for the rest of today.
 
-- **Never connected GitHub to Codex:** in Codex, open the **GitHub** connector and connect it. Sign in to GitHub, choose **Only select repositories**, pick **clone-wars**, and click **Install**. <!-- CONFIRM after Kyle's test: exact place to find the GitHub connector in the Codex app members use. -->
-- **Already connected before:** on GitHub, click your profile picture → **Settings** → **Applications** → **Installed GitHub Apps** → the ChatGPT/Codex app → **Configure**. Under **Repository access**, choose **Only select repositories**, add **clone-wars**, and click **Save**.
+**Already connected GitHub to Codex before?** On GitHub, click your profile picture → **Settings** → **Applications** → **Installed GitHub Apps** → the ChatGPT/Codex app → **Configure**. Under **Repository access**, choose **Only select repositories**, add **clone-wars**, and click **Save**.
 
-You'll confirm it worked in [Step 3](#3a-verify-access).
+You'll confirm it worked in [Step 3](#3a-verify-access). If the check lists files you don't recognize, you're in an old project: make a new one and try again.
 
 ### 1c. Turn on your live link
 

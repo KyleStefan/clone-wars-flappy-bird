@@ -60,8 +60,8 @@ Tell me exactly what to do next, one small step at a time.
 **Likely cause:** the chat is attached to an old project, often a folder on your laptop from an earlier session, or you pasted the wrong link.
 
 **Fix:**
-1. **Start a new chat.** This is exactly when a new chat helps.
-2. If Codex lets you pick a project or folder, make sure an old local folder isn't selected.
+1. **Create a new project in Codex and name it Clone Wars.** A new project starts connected to nothing. An old one is still tied to the last repository you used it for, and that's usually what went wrong.
+2. Connect that new project to GitHub, with access to your `clone-wars` repository only.
 3. Send the [access check](../README.md#3a-verify-access) with your exact `YOUR-USERNAME/clone-wars`.
 4. Continue only when the list includes `README.md`, `CONTRACT.md`, `AGENTS.md` and `index.html`.
 
