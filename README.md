@@ -71,7 +71,7 @@ In the room and not set up? Follow along on a neighbor's screen, then build your
 
 **Already connected GitHub to Codex before?** On GitHub, click your profile picture → **Settings** → **Applications** → **Installed GitHub Apps** → the ChatGPT/Codex app → **Configure**. Under **Repository access**, choose **Only select repositories**, add **clone-wars**, and click **Save**.
 
-You'll confirm it worked in [Step 3](#3a-verify-access). If the check lists files you don't recognize, you're in an old project: make a new one and try again.
+You'll confirm it worked in [Step 2](#step-2-verify-access). If the check lists files you don't recognize, you're in an old project: make a new one and try again.
 
 ### 1c. Turn on your live link
 
@@ -93,7 +93,25 @@ Your live link stays the same as you update your repository, so this entry will 
 
 ---
 
-## Step 2: Write your game prompt
+## Step 2: Verify access
+
+**Use the Codex project you made in Step 1b.** Select **GPT-5.6 Luna**, then send this with your username:
+
+```text
+Can you see my GitHub repo YOUR-USERNAME/clone-wars?
+Answer yes or no, then list the files you see. Don’t change anything.
+```
+
+- **"Yes," and the list includes `README.md`, `CONTRACT.md`, `AGENTS.md` and `index.html`:** Codex can reach the right repository. Keep this chat open and go to Step 3.
+- **"No," or a list of different files:** stop here. ([Help: can't see the repository](docs/HELP.md#1-codex-cannot-see-the-repository) · [wrong repository](docs/HELP.md#3-codex-is-connected-to-the-wrong-repository))
+
+Do this **before** you write anything else. It confirms Codex is connected to the correct repository, before anything changes.
+
+---
+
+## Step 3: Write your prompt and start the team
+
+### 3a. Write your game prompt
 
 Nothing goes into Codex yet. Copy this prompt into your note and replace the five **[brackets]**, including the brackets themselves.
 
@@ -140,26 +158,6 @@ Do not merge anything, and do not combine them.
 | Pigeon Flap | New York at night, skyscrapers as obstacles. I play as a pigeon. | a coo, a subway ding, a taxi horn | Easier first 3 obstacles |
 
 Go for the vibe, not the brand: "Star Wars-inspired" is fine, but no named characters, logos or theme songs.
-
----
-
-## Step 3: Verify access and start the Codex team
-
-**Use the Codex chat that has GitHub connected.** You don't need a new chat. Start a new one only if your current chat is confused, connected to the wrong repository, or full of unrelated work.
-
-### 3a. Verify access
-
-Select **GPT-5.6 Luna**, then send this with your username:
-
-```text
-Can you see my GitHub repo YOUR-USERNAME/clone-wars?
-Answer yes or no, then list the files you see. Don’t change anything.
-```
-
-- **"Yes," and the list includes `README.md`, `CONTRACT.md`, `AGENTS.md` and `index.html`:** Codex can access the right repository. Continue in this same chat.
-- **"No," or a list of different files:** stop here. ([Help: can't see the repository](docs/HELP.md#1-codex-cannot-see-the-repository) · [wrong repository](docs/HELP.md#3-codex-is-connected-to-the-wrong-repository))
-
-This check confirms Codex is connected to the correct repository **before** anything changes.
 
 ### 3b. Start the team
 
@@ -325,7 +323,7 @@ Open **[the portal](https://calpolyvibecoding.com/portal)** → **Builds** → e
 Once your game is done, use the same review workflow for anything new.
 
 1. Continue in your repo-connected Codex chat, or start a new chat if you prefer.
-2. Verify that Codex can see the repository ([Step 3a](#3a-verify-access)).
+2. Verify that Codex can see the repository ([Step 2](#step-2-verify-access)).
 3. Ask Codex to read `AGENTS.md`, `CONTRACT.md` and the current code.
 4. Describe the change you want.
 5. Ask Codex to explain its plan and stop.

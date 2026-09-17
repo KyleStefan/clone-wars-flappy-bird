@@ -26,7 +26,7 @@ Tell me exactly what to do next, one small step at a time.
 
 ### 1. Codex cannot see the repository
 
-**What you see:** Codex answers "No" to the [access check](../README.md#3a-verify-access), says the repository doesn't exist, or can't find it.
+**What you see:** Codex answers "No" to the [access check](../README.md#step-2-verify-access), says the repository doesn't exist, or can't find it.
 
 **Likely cause:** your repository isn't in the GitHub connector's list, the connector isn't connected, or the username or repository name is misspelled.
 
@@ -34,7 +34,7 @@ Tell me exactly what to do next, one small step at a time.
 1. Check the name. It must be exactly `YOUR-USERNAME/clone-wars`, with your username.
 2. On GitHub: profile picture → **Settings** → **Applications** → **Installed GitHub Apps** → the ChatGPT/Codex app → **Configure**.
 3. Under **Repository access**, choose **Only select repositories**, add **clone-wars**, and click **Save**.
-4. Not in that list at all? The connector was never installed. Connect it from Codex ([Step 1b](../README.md#1b-connect-github-to-codex-this-repository-only)).
+4. Not in that list at all? The connector was never installed. Connect it from Codex ([Step 1b](../README.md#1b-start-a-new-codex-project-called-clone-wars)).
 5. Send the access check again in the same chat. Still "No"? Start a new chat and try once more.
 
 **Ask an officer if:** the repository is added and a new chat still says "No."
@@ -49,7 +49,7 @@ Tell me exactly what to do next, one small step at a time.
 1. On github.com, click your profile picture and check the username. Sign out and sign in to the account that owns `clone-wars`.
 2. In Codex, disconnect the GitHub connector, then connect it again while signed into the right account.
 3. Choose **Only select repositories** → **clone-wars**.
-4. Run the [access check](../README.md#3a-verify-access) again.
+4. Run the [access check](../README.md#step-2-verify-access) again.
 
 **Ask an officer if:** you can't find where to disconnect the connector, or you don't know which account owns the repository.
 
@@ -62,7 +62,7 @@ Tell me exactly what to do next, one small step at a time.
 **Fix:**
 1. **Create a new project in Codex and name it Clone Wars.** A new project starts connected to nothing. An old one is still tied to the last repository you used it for, and that's usually what went wrong.
 2. Connect that new project to GitHub, with access to your `clone-wars` repository only.
-3. Send the [access check](../README.md#3a-verify-access) with your exact `YOUR-USERNAME/clone-wars`.
+3. Send the [access check](../README.md#step-2-verify-access) with your exact `YOUR-USERNAME/clone-wars`.
 4. Continue only when the list includes `README.md`, `CONTRACT.md`, `AGENTS.md` and `index.html`.
 
 **Ask an officer if:** a new chat still shows the wrong files.
@@ -103,7 +103,7 @@ Tell me exactly what to do next, one small step at a time.
 **Fix:**
 1. Do [Step 1a](../README.md#1a-create-your-repository) to create your own `clone-wars` repository.
 2. Update the repository link in your note and in your prompt.
-3. Run the [access check](../README.md#3a-verify-access) with your username.
+3. Run the [access check](../README.md#step-2-verify-access) with your username.
 
 **Ask an officer if:** you can't create the repository.
 
@@ -118,7 +118,7 @@ Tell me exactly what to do next, one small step at a time.
 **Likely cause:** the prompt was incomplete, or parallel sub-agents aren't available in your version of Codex.
 
 **Fix:**
-1. Make sure you pasted the whole prompt from [Step 2](../README.md#step-2-write-your-game-prompt) and typed **go**.
+1. Make sure you pasted the whole prompt from [Step 3](../README.md#3a-write-your-game-prompt) and typed **go**.
 2. Send: `Follow AGENTS.md Part A, Step 2: start the Core, Art and Sound subagents now.`
 3. If sub-agents aren't available, the team lead should say so and do the three jobs one after another. You still get three pull requests. See [problem 9](#9-sub-agents-ran-one-at-a-time).
 
