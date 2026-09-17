@@ -37,7 +37,7 @@ You lead. You plan, start the subagents, check their work and make sure three pu
    >
    > **You changed three things about the game, and each builder builds one of them.**
    >
-   > **Why they don't collide:** each job makes different files on its own branch. They only share names from `CONTRACT.md`, like `drawBird` and `flap`.
+   > **Why they don't collide:** each job makes different files, in its own folder, on its own branch. They only share names from `CONTRACT.md`, like `drawBird` and `flap`.
    >
    > **The part that can't be split:** the crash check. It needs the bird and the pipes at the same moment, so the whole game loop stays with Core.
    >
@@ -49,14 +49,20 @@ You lead. You plan, start the subagents, check their work and make sure three pu
 
 ### Step 2 · When the member types `go`
 
-1. **Start all three subagents at the same time.** Do not wait for one to finish before starting the next. Use the model `gpt-5.6-luna` for every subagent. If that model isn't available, use the cheapest, fastest model you can.
-2. Give each subagent exactly this, and nothing else:
-   - "You are the [Core / Art / Sound] subagent. Read `AGENTS.md` Part B and Part C, and `CONTRACT.md`, in [repo]."
+1. **Set up one folder per builder before you start anyone.** Builders that share one folder switch branches under each other and commit to the wrong branch. In the project folder, run:
+   1. `git remote -v`. If there's no `origin`, run `git remote add origin [repo].git`. If `origin` is a different repository, stop and tell the member.
+   2. `git fetch origin`
+   3. `git worktree add .worktrees/core -b clone-wars-core origin/main`, then the same for `art` and `sound`. If a folder already exists, reuse it. If only the branch exists, leave out `-b`: `git worktree add .worktrees/core clone-wars-core`.
+
+   A worktree is a separate folder with its own branch, made from the latest `main` on GitHub.
+2. **Start all three subagents at the same time.** Do not wait for one to finish before starting the next. Use the model `gpt-5.6-luna` for every subagent. If that model isn't available, use the cheapest, fastest model you can.
+3. Give each subagent exactly this, and nothing else:
+   - "You are the [Core / Art / Sound] subagent. Read `AGENTS.md` Part B and Part C, and `CONTRACT.md`, in [repo]. Your folder is `[full path to .worktrees/core, art or sound]`. Work only there."
    - Its job section from Part B below, copied word for word.
    - The My version lines it uses (see the table in Part B).
-3. Note the real clock time you started each one.
-4. Tell the member: "Three subagents are working at the same time now. Each one will open its own pull request. This takes a few minutes." If your app shows subagent threads, tell the member where to see them.
-5. Don't write any of their files while they work.
+4. Note the real clock time you started each one.
+5. Tell the member: "Three subagents are working at the same time now. Each one will open its own pull request. This takes a few minutes." If your app shows subagent threads, tell the member where to see them.
+6. Don't write any of their files while they work.
 
 ### Step 3 · Check each subagent's work
 
@@ -65,7 +71,7 @@ When all three are done, check each pull request **separately**:
 1. **Stayed in its lane:** its pull request changes only its own files (see the table at the top). If it changed anything else, put that file back the way it is on `main`, on that branch.
 2. **Names match `CONTRACT.md`:** look hardest at `GAME_CONFIG`, `SPRITES`, `SOUNDS`, `drawBackground`, `drawGround`, `drawBird`, `drawPipe`, `flap`, `score`, `crash`. One wrong letter and that part won't plug in.
 3. **Optional, if you can run commands:** copy the four files into one scratch folder with the rest of the repo and run `node tests/check.cjs`. Put the result in your summary to the member. Never merge or combine branches to do this.
-4. If one subagent failed, or its work breaks a rule, start **one fresh subagent** for that job only, on the same branch, with the same instructions plus one sentence saying what was wrong. Do this **once**. Don't fix its code yourself. If it fails again, say so in the summary.
+4. If one subagent failed, or its work breaks a rule, start **one fresh subagent** for that job only, in the same folder on the same branch, with the same instructions plus one sentence saying what was wrong. Do this **once**. Don't fix its code yourself. If it fails again, say so in the summary.
 
 ### Step 4 · Hand the member three pull requests
 
@@ -92,8 +98,8 @@ When all three are done, check each pull request **separately**:
 
 ### Fallbacks
 
-1. **You can't start subagents here.** Do the three jobs yourself, **one after another**: Core, then Art, then Sound, following each job section exactly. Still use three branches and three pull requests. Tell the member: "Subagents aren't available here, so I did the three jobs one at a time. You still get three pull requests to check."
-2. **Subagents can't use their own branches or open pull requests.** Have each subagent send you its finished files and report instead. Then you create the three branches from `main`, save each subagent's files on its own branch, and open the three pull requests using its report.
+1. **You can't start subagents here.** Do the three jobs yourself, **one after another**: Core, then Art, then Sound, following each job section exactly. Still use the three folders from Step 2, three branches and three pull requests. Tell the member: "Subagents aren't available here, so I did the three jobs one at a time. You still get three pull requests to check."
+2. **Subagents can't use their own branches or open pull requests.** Have each subagent send you its finished files and report instead. Then you save each subagent's files in its folder from Step 2, commit and push each branch, and open the three pull requests using its report.
 3. **You can't create pull requests.** Tell the member the three branch names and that they can open each one from their GitHub repo page with **Compare & pull request**, or **Pull requests → New pull request**.
 
 ### When the member is stuck and asks for help
@@ -118,8 +124,8 @@ Members are told to ask you first, before an officer. You can see their situatio
 The member evaluated one builder's work and something is wrong. They'll describe it.
 
 1. Start **one fresh subagent** for that builder only, with its job section from Part B, its My version lines, and the member's words about what's wrong. Use `gpt-5.6-luna`.
-2. **If that builder's pull request isn't merged yet:** the subagent fixes its files on the same branch, so the same pull request updates.
-3. **If it's already merged:** the subagent works on a new branch named `clone-wars-fix-[core / art / sound]` from `main` and opens a pull request titled `Fix [Core / Art / Sound]: [what was wrong]`.
+2. **If that builder's pull request isn't merged yet:** the subagent works in that builder's folder (`.worktrees/[core / art / sound]`, set up as in Step 2 if it's missing) and fixes its files on the same branch, so the same pull request updates.
+3. **If it's already merged:** run `git fetch origin`, then `git worktree add .worktrees/fix-[core / art / sound] -b clone-wars-fix-[core / art / sound] origin/main`. The subagent works in that folder and opens a pull request **into `main`** titled `Fix [Core / Art / Sound]: [what was wrong]`.
 4. It changes only that builder's files. Every `CONTRACT.md` name stays the same.
 5. Don't merge. Tell the member what changed and to check and merge it again.
 6. This is that builder's **one** fix try. If Core is still broken, tell the member to use the answer key. If Art or Sound is still broken, tell the member to keep going and flag it to an officer after the meeting.
@@ -128,14 +134,24 @@ The member evaluated one builder's work and something is wrong. They'll describe
 
 ### When the member types "use the answer key"
 
-1. Work on a new branch named `answer-key` from `main`.
+1. Run `git fetch origin`, then `git worktree add .worktrees/answer-key -b answer-key origin/main`. Work only in that folder.
 2. Read `game.js` from the public repo **https://github.com/KyleStefan/clone-wars-answer-key** (branch `main`).
 3. Replace the member's `game.js` with it, **unchanged, every line.** If the member hasn't merged Core yet, also copy their Core branch's `config.js` onto this branch.
 4. Look at `fix` in the member's `config.js`. If it's `'easy-mode'`, `'gentle-start'`, `'checkpoints'` or `'none'`, leave it. If it's `'custom'`, change it to `'none'` and tell the member: "The answer key doesn't include your own 'plays differently' idea, so the game plays like the original. Your title, how it looks and how it sounds are still yours."
 5. Don't touch `sprites.js` or `sounds.js`.
-6. Open a pull request titled `Use the answer key`. Don't merge. Tell the member to merge it in place of Core, then keep going with Art and Sound.
+6. Open a pull request **into `main`** titled `Use the answer key`. Don't merge. Tell the member to merge it in place of Core, then keep going with Art and Sound.
 
 If you can't read the other repo, tell the member to follow **Use the answer key by hand** in `docs/HELP.md`.
+
+### When the member asks for any other change
+
+Anything after the first build: a new feature, a tweak, a bug they found.
+
+1. Run `git fetch origin`. **Always start from the latest `main` on GitHub.** Never start from a builder branch or from whatever is checked out, even if earlier work in this chat used one.
+2. Tell the member your plan and which files you'll change. Stop until they type `go`.
+3. Pick a short branch name. Run `git worktree add .worktrees/[name] -b [name] origin/main` and work only in that folder.
+4. Test, commit, push, and open **one** pull request **into `main`** (for example, `--base main`). Don't merge.
+5. Tell the member: "Before you merge, check that the pull request says it merges **into main**."
 
 ---
 
@@ -147,11 +163,11 @@ If you can't read the other repo, tell the member to follow **Use the answer key
 | **Art** | `clone-wars-art` | `sprites.js` | Looks like |
 | **Sound** | `clone-wars-sound` | `sounds.js` | Sounds like (and Looks like, if Sounds like says "whatever fits") |
 
-Create your branch from `main`. The other two subagents are working at the same time on their own branches. You will not see their files. **That is normal. Never create another subagent's files.** Trust `CONTRACT.md`.
+Work only in the folder the orchestrator gave you. It's already on your branch, made from `main`. Never switch branches there, and never work in the main project folder. No folder? Stop and ask the orchestrator for one. The other two subagents are working at the same time in their own folders. You will not see their files. **That is normal. Never create another subagent's files.** Trust `CONTRACT.md`.
 
 **Every subagent finishes the same way:**
 
-1. Commit only your files to your branch.
+1. From your folder, commit only your files and push your branch.
 2. Open a pull request from your branch to `main`, titled `[Core / Art / Sound]: [Title]`, with this description:
 
    ```
@@ -209,6 +225,7 @@ Create your branch from `main`. The other two subagents are working at the same 
 - **Nothing from the internet.** No `fetch`, no web addresses, no API keys, no image files, no audio files, no web fonts.
 - **No `innerHTML`.** Use `textContent`.
 - **No brands or real people.** Don't use the words "Flappy Bird", logos, or real people's names or faces. If "Looks like" or "Sounds like" names a movie, show or game, match the vibe with original designs: no named characters, famous ships, logos or theme songs.
+- **One folder per branch.** Never switch branches in the main project folder or in another agent's folder. Every pull request goes **into `main`**.
 - **Never merge.** The member merges, one pull request at a time.
 - **Never read or copy the answer key** unless the member typed "use the answer key".
 - **If something is unclear, stop and ask.** Don't guess.

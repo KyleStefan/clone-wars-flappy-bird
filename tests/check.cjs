@@ -416,7 +416,9 @@ function filesCheck() {
   section('7. Files changed on this branch');
   let changed = [];
   try {
-    const base = childProcess.execSync('git merge-base HEAD main', { cwd: root, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    const mergeBase = (ref) => childProcess.execSync('git merge-base HEAD ' + ref, { cwd: root, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    let base;
+    try { base = mergeBase('origin/main'); } catch (error) { base = mergeBase('main'); }
     changed = childProcess.execSync('git diff --name-only ' + base + ' HEAD', { cwd: root }).toString().trim().split('\n').filter(Boolean);
   } catch (error) {
     console.log('  skip  not a git repo with a main branch');

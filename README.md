@@ -14,10 +14,10 @@ A one-page game that plays at your own live link. You choose four things:
 
 | Choice | Example |
 | --- | --- |
-| **Title** | SLO Flap |
-| **Looks like** | San Luis Obispo at sunset, palm trees as obstacles. I play as a seagull. |
-| **Sounds like** | a squawk, a beach bell, a splash |
-| **Plays differently** | Easy/Normal buttons |
+| **Title** | Galaxy Flap |
+| **Looks like** | Star Wars-inspired: a desert planet with two suns, laser gates as obstacles. I fly a small starfighter. |
+| **Sounds like** | a laser pew, a hyperspace whoosh, an explosion |
+| **Plays differently** | Lasers shoot from the right side of the screen to the left at different heights, and I have to dodge them. |
 
 ### The Codex team
 
@@ -130,7 +130,14 @@ Do not merge anything, and do not combine them.
 | **Checkpoints every 10 points** | After a crash, you restart from your last checkpoint (10, 20, 30…). |
 | **Your own idea** | One sentence. Riskier, and not covered by the answer key. |
 
-More ideas: a small starfighter dodging laser gates in space; a pigeon between New York skyscrapers. Go for the vibe, not the brand: no named characters, logos or theme songs.
+**More ways to change it up**
+
+| Title | Looks like | Sounds like | Plays differently |
+| --- | --- | --- | --- |
+| SLO Flap | San Luis Obispo at sunset, palm trees as obstacles. I play as a seagull. | a squawk, a beach bell, a splash | Easy/Normal buttons |
+| Pigeon Flap | New York at night, skyscrapers as obstacles. I play as a pigeon. | a coo, a subway ding, a taxi horn | Easier first 3 obstacles |
+
+Go for the vibe, not the brand: "Star Wars-inspired" is fine, but no named characters, logos or theme songs.
 
 ---
 
@@ -322,31 +329,31 @@ Once your game is done, use the same review workflow for anything new.
 5. Ask Codex to explain its plan and stop.
 6. Review the plan.
 7. Type `go`.
-8. Codex implements the change, tests it and opens **one** pull request.
+8. Codex implements the change, tests it and opens **one** pull request **into main**.
 9. Don't let Codex merge it.
-10. Review the pull request: **Files changed**, the description.
+10. Review the pull request. At the top, it must say it wants to merge **into main**. If it names another branch (like `clone-wars-core`), don't merge. Send: `Open this pull request into main instead.` Then check **Files changed** and the description.
 11. Merge only after checking the files, **Actions** and your live link.
 
-**Example: change how the lasers behave**
+**Example: make the lasers speed up**
 
 ```text
 Read AGENTS.md, CONTRACT.md, and the current game code.
 
-I want to change the laser gameplay:
+I want the lasers to get harder as I score:
 
-- Lasers should always spawn from the right side of the screen.
-- They should move from right to left toward the player.
-- Each new laser should spawn at a different randomized vertical height.
-- The height should stay within playable screen boundaries.
-- The player should need to move vertically to dodge them.
+- Every 5 points, lasers move a little faster.
+- Cap the speed at twice the starting speed.
+- Keep lasers coming from the right side at different heights.
 - Preserve the current art, sounds, controls, scoring, and overall game style.
+
+Start from the latest main on GitHub and open the pull request into main.
 
 First, explain your plan and identify which files you will change. Then stop and wait for me to type "go".
 
 After I type "go", implement the change, test it, and open one pull request. Do not merge the pull request.
 ```
 
-The "playable screen boundaries" line matters. Codex should pick heights from a **bounded** random range. Without limits, a laser could spawn somewhere you can't reach, and the game becomes impossible.
+The "cap the speed" line matters. Without a top speed, the lasers eventually get too fast to dodge, and the game becomes impossible.
 
 ### Cleaning up branches
 
