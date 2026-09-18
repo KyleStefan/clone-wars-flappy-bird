@@ -342,7 +342,7 @@ Still seeing **"Your starter is live."**? Core isn't merged yet, or see [problem
 **Likely cause:** four agents use a lot of your allowance, especially on bigger models.
 
 **Fix:**
-1. **Nothing is lost.** Your live link is already in the portal from [Step 1d](../README.md#1d-save-your-links-and-submit-to-the-portal).
+1. **Nothing is lost.** Your live link is already in the portal from [Step 1e](../README.md#1e-save-your-links-and-submit-to-the-portal).
 2. Watch a neighbor's build for the rest of the session.
 3. After your limit resets (a short limit resets within hours, a weekly limit can take days), send in the same chat: `Read AGENTS.md in my repo. My Clone Wars build stopped because I ran out of usage. Check which builders already have a branch or pull request. Restart only the missing builders. Don't merge.`
 4. Next time, select **GPT-5.6 Luna** before you start.

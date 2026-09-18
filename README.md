@@ -40,6 +40,17 @@ A one-page game that plays at your own live link. You choose four things:
 | **Repository link** | `https://github.com/YOUR-USERNAME/clone-wars` | Where your files live. **Give this one to Codex.** |
 | **Live link** | `https://YOUR-USERNAME.github.io/clone-wars/` | Your playable game. **Submit this one to the portal.** |
 
+### Two different things: GitHub access and your local project
+
+These sound the same and aren't. You need both.
+
+| | What it is | Set up in |
+| --- | --- | --- |
+| **GitHub access** | Permission for Codex to look at your repository on github.com. | [Step 1b](#1b-start-a-new-codex-project-called-clone-wars) |
+| **Your local Codex project** | The folder on your computer where Codex runs commands and edits files. | [Step 1c](#1c-put-the-files-in-your-local-codex-project) |
+
+**Use this template copies the files on GitHub. It does not fill your local project folder.** That folder can still be completely empty after GitHub access is working, and connecting the GitHub app does not fill it either. Step 1c is where the files land on your computer.
+
 ---
 
 ## Before you start
@@ -61,6 +72,10 @@ In the room and not set up? Follow along on a neighbor's screen, then build your
 3. **Owner:** your account. **Repository name:** `clone-wars`. Choose **Public**. Click **Create repository**.
 4. Check the address bar. It must say `github.com/YOUR-USERNAME/clone-wars`. If it says `KyleStefan`, you're still on the club template. ([Help](docs/HELP.md#6-i-used-the-club-template-instead-of-my-own-repository))
 
+**The name must be exactly `clone-wars`.** Every command, prompt and permission in this guide uses that name, and a different name is the most common reason pull requests fail later. Already named it something else? Open your repository → **Settings** → **General** → **Repository name**, change it to `clone-wars`, and click **Rename**. No need to make a new one.
+
+**Leave "Include all branches" off.** You still get the default branch and every file in it. Turning it on only copies extra branches you don't need.
+
 ### 1b. Start a new Codex project called Clone Wars
 
 **Make a new project. Don't reuse an old one.** An old project is still tied to whatever repository you used it for last, and Codex will quietly work on that one instead of yours. A new project starts connected to nothing.
@@ -71,9 +86,56 @@ In the room and not set up? Follow along on a neighbor's screen, then build your
 
 **Already connected GitHub to Codex before?** On GitHub, click your profile picture → **Settings** → **Applications** → **Installed GitHub Apps** → the ChatGPT/Codex app → **Configure**. Under **Repository access**, choose **Only select repositories**, add **clone-wars**, and click **Save**.
 
-You'll confirm it worked in [Step 2](#step-2-verify-access). If the check lists files you don't recognize, you're in an old project: make a new one and try again.
+This gives Codex permission to **view** your repository. It does not put the files on your computer. That's the next step.
 
-### 1c. Turn on your live link
+### 1c. Put the files in your local Codex project
+
+Your repository on GitHub has the files. Your local Codex project may still be empty. This step connects the two.
+
+Open the **Terminal** in your Codex project and run these two commands:
+
+```text
+git remote -v
+git status --short --branch
+```
+
+- **`git remote -v`** shows the **remote**: the GitHub repository your local folder talks to. You want two lines naming `YOUR-USERNAME/clone-wars`.
+- **`git status --short --branch`** shows which **branch** you're on. A branch is one line of work, and `main` is the default one. You want `## main...origin/main`.
+
+If both look right and you can see the template files in the project, this step is done.
+
+**Folder empty, no remote listed, or it says "No commits yet"?** Run these three, with your GitHub username in place of `YOUR-USERNAME`:
+
+```text
+git remote add origin https://github.com/YOUR-USERNAME/clone-wars.git
+git fetch origin
+git switch -c main --track origin/main
+```
+
+`git fetch` downloads your repository's files from GitHub. The last command **checks out** `main`, which means your folder now shows that branch's files.
+
+**Says `origin` already exists, or `git remote -v` names the wrong repository?** Point it at yours, then run the `git fetch` and `git switch` commands above again:
+
+```text
+git remote set-url origin https://github.com/YOUR-USERNAME/clone-wars.git
+```
+
+**Checkpoint: don't go on until your local Codex project shows all of these.**
+
+```text
+README.md
+CONTRACT.md
+AGENTS.md
+index.html
+docs/
+tests/
+```
+
+**GitHub shows the files but your Codex folder is blank?** Nothing went wrong with the template. The copy worked. Your local folder just hasn't been connected and checked out yet, so run the commands above. Don't create the GitHub repository again.
+
+You'll confirm all of this in [Step 2](#step-2-verify-access).
+
+### 1d. Turn on your live link
 
 1. In your repository, click **Settings** → **Pages**.
 2. Under **Build and deployment**, set **Source** to **Deploy from a branch**, **Branch** to **main** and **/(root)**. Click **Save**.
@@ -83,7 +145,7 @@ You should see **"Your starter is live."** A 404 for the first minute or two is 
 
 **To find your live link any time:** Repository → **Settings** → **Pages** → **Visit site**. It's the `github.io` link, not the `github.com` link.
 
-### 1d. Save your links and submit to the portal
+### 1e. Save your links and submit to the portal
 
 1. Paste your **repository link** and **live link** into a note. You'll need both.
 2. Open **[calpolyvibecoding.com/portal](https://calpolyvibecoding.com/portal)** → **Builds** → **Post this week's build**.
@@ -95,17 +157,22 @@ Your live link stays the same as you update your repository, so this entry will 
 
 ## Step 2: Verify access
 
+This checks two separate things: that Codex can reach **your repository on GitHub**, and that **your local project folder** actually has the files. Seeing files on github.com does not mean your local folder has them.
+
 **Use the Codex project you made in Step 1b.** Select **GPT-5.6 Luna**, then send this with your username:
 
 ```text
-Can you see my GitHub repo YOUR-USERNAME/clone-wars?
-Answer yes or no, then list the files you see. Don’t change anything.
+Can you verify that this local Codex project is connected to my GitHub
+repository YOUR-USERNAME/clone-wars? First check the Git remote and
+current branch, then list the files in the local project.
+Answer yes or no. Don’t change anything.
 ```
 
-- **"Yes," and the list includes `README.md`, `CONTRACT.md`, `AGENTS.md` and `index.html`:** Codex can reach the right repository. Keep this chat open and go to Step 3.
-- **"No," or a list of different files:** stop here. ([Help: can't see the repository](docs/HELP.md#1-codex-cannot-see-the-repository) · [wrong repository](docs/HELP.md#3-codex-is-connected-to-the-wrong-repository))
+- **Yes, with the remote naming `YOUR-USERNAME/clone-wars`, the branch `main`, and a file list including `README.md`, `CONTRACT.md`, `AGENTS.md` and `index.html`:** you're set. Stay in this project and go to Step 3.
+- **Right repository, but no files or "No commits yet":** the local project isn't checked out yet. Go back to [Step 1c](#1c-put-the-files-in-your-local-codex-project) and run the commands there.
+- **"No," or a different repository:** stop here. ([Help: can't see the repository](docs/HELP.md#1-codex-cannot-see-the-repository) · [wrong repository](docs/HELP.md#3-codex-is-connected-to-the-wrong-repository))
 
-Do this **before** you write anything else. It confirms Codex is connected to the correct repository, before anything changes.
+Do this **before** you write anything else. It confirms Codex is working in the right place, before anything changes.
 
 ---
 
@@ -161,7 +228,7 @@ Go for the vibe, not the brand: "Star Wars-inspired" is fine, but no named chara
 
 ### 3b. Start the team
 
-1. Paste your finished prompt from your note into the same chat and send it.
+1. Paste your finished prompt from your note into the same Codex project you just verified, and send it.
 2. The team lead replies with a plan and **stops**. Check that it lists:
    - [ ] **Core** (`game.js`, `config.js`), **Art** (`sprites.js`) and **Sound** (`sounds.js`)
    - [ ] Your title, how it looks, how it sounds and how it plays differently
@@ -322,8 +389,8 @@ Open **[the portal](https://calpolyvibecoding.com/portal)** → **Builds** → e
 
 Once your game is done, use the same review workflow for anything new.
 
-1. Continue in your repo-connected Codex chat, or start a new chat if you prefer.
-2. Verify that Codex can see the repository ([Step 2](#step-2-verify-access)).
+1. Continue in your Clone Wars Codex project, the one with your repository checked out.
+2. Verify the connection again ([Step 2](#step-2-verify-access)).
 3. Ask Codex to read `AGENTS.md`, `CONTRACT.md` and the current code.
 4. Describe the change you want.
 5. Ask Codex to explain its plan and stop.
